@@ -1,0 +1,48 @@
+﻿<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="row">
+                <div class="col-lg-9">
+                    <h3>Add New Level</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal" name="levelForm" novalidate>
+                <!--<fieldset>
+        <legend>New Program</legend>-->
+                <div class="form-group"
+                     ng-class="{'has-error':levelForm.itemCodeID.$invalid &&
+                                    levelForm.itemCodeID.$dirty}">
+                    <label class="col-md-3 control-label" for="itemCodeID">ItemCode</label>
+
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="itemCodeID" name="itemCodeID" ng-model="vm.codes.itemCodeID" required>
+                        <span class="help-block has-error"
+                              ng-show="levelForm.itemCodeID.$invalid ">
+                            Level Code is required
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-class="{'has-error':levelForm.description.$invalid &&
+                                    levelForm.description.$dirty}">
+                    <label class="col-md-3 control-label" for="description">Description</label>
+                    <div class="col-md-8">
+                        <input class="form-control" name="description" id="description" type="text" ng-model="vm.codes.description" required />
+                        <span class="help-block has-error"
+                              ng-show="levelForm.description.$invalid ">
+                            Description is required
+                        </span>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <hr/>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-disabled="levelForm.$invalid" ng-click="vm.createlevel(vm.codes)">Create</button>
+            <button class="btn btn-danger" ng-click="vm.cancel(vm.codes)">Cancel</button>
+        </div>
+    </div>
+</div>

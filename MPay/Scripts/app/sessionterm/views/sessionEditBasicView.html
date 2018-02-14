@@ -1,0 +1,101 @@
+﻿<div class="row">
+    <form name="sessionForm"  role="form" novalidate>
+        <fieldset>
+            <legend class="resizer">{{vm.title}}</legend>
+
+            <!--<hr />-->
+            <div class="row">
+                <div class="col-md-5" style="margin-left:2%;">
+                    <div class="form-group" ng-show="{{vm.session}}">
+                        <label class="control-label" for="sessionID">Session ID</label>
+                        <input type="text" id="sessionID" name="sessionID" readonly="readonly" ng-model="vm.session.sessionID" class="form-control" required />
+                    </div>
+                    <div class="form-group" ng-show="{{!vm.session}}" ng-class="{'has-error':sessionForm.sessionID.$invalid}">
+                        <label class="control-label" for="sessionID">Session ID</label>
+                        <input type="hidden" id="recordID" name="recordID" ng-model="vm.session.recordID" class="form-control" />
+                        <input type="text" id="sessionID" name="sessionID" placeholder="Session ID (required)   e.g 2019/2020" ng-model="vm.session.sessionID" class="form-control" required="" />
+                        <span ng-show="sessionForm.sessionID.$invalid && sessionForm.sessionID.$dirty" class="help-block has-error">
+                           Session ID is required
+                        </span>
+                    </div>
+
+                    <div class="form-group" ng-class="{'has-error':sessionForm.description.$invalid}">
+                        <label class="control-label" for="description">Description</label>
+                        <input type="text" id="description" name="description" placeholder="Description (required)  e.g 2019/2020 Session" ng-model="vm.session.description" class="form-control" required="" />
+                        <span class="help-block has-error" ng-show="sessionForm.description.$invalid && sessionForm.description.$dirty">
+                            Description is required
+                        </span>
+                    </div>
+
+                    <div class="form-group" ng-class="{'has-error':sessionForm.middleName.$invalid}">
+                        <label class="control-label" for="noOfTerms">No of Terms</label>
+                        <input type="number" id="noOfTerms" min="1" step="1" name="noOfTerms" placeholder="No Of Terms   e.g 2" ng-model="vm.session.noOfTerms"
+                                class="form-control" required      />
+                        <span class="help-block has-error" ng-show="sessionForm.noOfTerms.$invalid && sessionForm.noOfTerms.$dirty">
+                            Description is required
+                        </span>
+                    </div>
+
+                    <h5>Start Date:</h5>
+                    <p class="input-group" ng-class="{'has-error':sessionForm.startDate.$invalid}">
+                        <input class="form-control" id="startDate" type="text" uib-datepicker-popup is-open="vm.popup1.opened"
+                               datepicker-options="vm.dateOptions" ng-model="vm.session.startDate" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" ng-click="vm.openstartDate()"><i class="glyphicon glyphicon-calendar" /></button>
+                        </span>
+                    </p>
+
+                    <h5>End Date:</h5>
+                    <p class="input-group" ng-class="{'has-error':sessionForm.endDate.$invalid}">
+                        <input class="form-control" id="endDate" type="text" uib-datepicker-popup is-open="vm.popup2.opened"
+                               datepicker-options="vm.dateOptions" ng-model="vm.session.endDate" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" ng-click="vm.openendDate()"><i class="glyphicon glyphicon-calendar" /></button>
+                        </span>
+                    </p>
+
+                </div>
+
+            </div>
+        </fieldset>
+    </form>
+
+    <div class="panel-footer"  style="width:1060px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="btn-toolbar" role="toolbar" aria-label="...">           
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-success" ng-hide="{{vm.session}}" ng-click="vm.saveSession(sessionForm,vm.session)">
+                            <span class="glyphicon glyphicon-saved"></span> Save & Close
+                        </button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-success" ng-hide="{{!vm.session}}" ng-click="vm.saveEditSession(sessionForm,vm.session)">
+                            <span class="glyphicon glyphicon-saved"></span> Save Changes
+                        </button>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-print"></span> Print
+                        </button>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger" ng-click="vm.reset()">
+                            <span class="glyphicon glyphicon-minus-sign"></span> Delete
+                        </button>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger" ng-click="vm.reset(vm.session)">
+                            <span class="glyphicon glyphicon-remove"></span> Clear
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

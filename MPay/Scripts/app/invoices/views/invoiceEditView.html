@@ -1,0 +1,17 @@
+﻿<div class="panel panel-primary">
+    <div class="panel-heading" style="font-size:large">Invoice Processing</div>
+    <div class="panel-body">
+        <div id="exTab2" class="container">
+            <ul class="nav nav-tabs" style="width:91%;">
+                <li>
+                    <a ui-sref=".list" data-target="#" ui-sref-active="active" data-toggle="tab">View Invoices</a>
+                </li>
+                <li>
+                    <a ui-sref=".process" ui-sref-active="active" data-ui-sref-opts="{reload: true}" data-toggle="tab">Process Invoice</a>
+                </li>
+            </ul>
+            <div ui-view></div>
+        </div>
+    </div>
+
+</div>

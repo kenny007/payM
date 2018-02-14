@@ -1,0 +1,122 @@
+﻿<!--<style>
+  .modal {
+display: block;
+</style>-->
+<div class="row">
+    <form name="inventoryForm"  role="form" novalidate>
+        <fieldset>
+            <legend class="resizer">{{vm.subtitle}}</legend>
+
+            <!--<hr />-->
+            <div class="row">
+                <div class="col-md-5" style="margin-left:2%;">
+                    <div class="form-group" ng-show="{{vm.feeitem}}">
+                        <label class="control-label" for="itemID">Item Code</label>
+                        <input type="text" id="itemID" name="itemID" readonly="readonly" ng-model="vm.feeitem.itemID" class="form-control" required/>
+                    </div>
+                    <div class="form-group" ng-show="{{!vm.feeitem}}" ng-class="{'has-error':inventoryForm.itemID.$invalid}">
+                        <label class="control-label" for="itemID">Item Code</label>
+                        <input type="hidden" id="recordID" name="recordID" ng-model="vm.feeitem.recordID" class="form-control" />
+                        <input type="text" id="itemID" name="itemID" placeholder="Item ID (required)" ng-model="vm.feeitem.itemID" class="form-control" required="" />
+                        <span ng-show="inventoryForm.itemID.$invalid && inventoryForm.itemID.$dirty" class="help-block has-error">
+                           Item Code is required
+                        </span>
+                    </div>
+
+                    <div class="form-group" ng-class="{'has-error':inventoryForm.itemName.$invalid}">
+                        <label class="control-label" for="itemName">Item Name</label>
+                        <input type="text" id="itemName" name="itemName" placeholder="Item Name (required)" ng-model="vm.feeitem.itemName" class="form-control" required/>
+                        <span class="help-block has-error" ng-show="inventoryForm.itemName.$invalid && inventoryForm.itemName.$dirty">
+                            Item Name is required
+                        </span>
+                    </div>
+
+                    <div class="form-group" ng-class="{'has-error':inventoryForm.itemDescription.$invalid}">
+                        <label class="control-label" for="itemDescription">Description</label>
+                        <input type="text" id="itemDescription" name="itemDescription" placeholder="Item Description" ng-model="vm.feeitem.itemDescription" class="form-control" required/>
+                        <span class="help-block has-error" ng-show="inventoryForm.itemDescription.$invalid && inventoryForm.itemDescription.$dirty">
+                            Item Description is required
+                        </span>
+                     </div>
+
+                    <div class="form-group" ng-class="{'has-error':inventoryForm.itemTypeID.$invalid}">
+                        <label class="control-label" for="itemTypeID">ItemTypeID</label>
+                        <select class="form-control" name="itemTypeID" id="itemTypeID" ng-model="vm.feeitem.itemTypeID" 
+                                ng-options="c.recordID as c.itemCodeID for c in vm.getitemtypes">
+                            <option value="">Select Item Type</option>
+                        </select>
+                        <div class="text-danger" ng-show="inventoryForm.itemTypeID.$invalid && inventoryForm.itemTypeID.$dirty">Please enter Item Type.</div>
+                    </div>
+
+                    <div class="form-group" ng-class="{'has-error':inventoryForm.glItemSalesAccount.$invalid}">
+                        <label class="control-label" for="glItemSalesAccount">Sales Account</label>
+                        <select class="form-control" name="glItemSalesAccount" id="glItemSalesAccount"  ng-model="vm.feeitem.glItemSalesAccount"
+                                ng-options="c.recordID as c.glAccountName for c in vm.glItems" >
+                            <option value="">Select Item Type</option>
+                        </select>
+                        <div class="text-danger" ng-show="inventoryForm.glItemSalesAccount.$invalid && inventoryForm.glItemSalesAccount.$dirty">Please enter Ledger Account.</div>
+                    </div>
+
+                    <div class="form-group" ng-class="{'has-error':inventoryForm.glItemCOGSAccount.$invalid}">
+                        <label class="control-label" for="glItemCOGSAccount">COG Account</label>
+                        <select class="form-control" name="glItemCOGSAccount" id="glItemCOGSAccount" ng-model="vm.feeitem.glItemCOGSAccount"
+                                ng-options="c.recordID as c.glAccountName for c in vm.glItems">
+                            <option value="">Select Item Type</option>
+                        </select>
+                        <div class="text-danger" ng-show="inventoryForm.glItemCOGSAccount.$invalid && inventoryForm.glItemCOGSAccount.$dirty">Please enter Ledger Account.</div>
+                    </div>
+
+                    <div class="form-group" ng-class="{'has-error':inventoryForm.glItemInventoryAccount.$invalid}">
+                        <label class="control-label" for="glItemInventoryAccount">Purchase Account</label>
+                        <select class="form-control" name="glItemInventoryAccount" id="glItemInventoryAccount" ng-model="vm.feeitem.glItemInventoryAccount"
+                                ng-options="c.recordID as c.glAccountName for c in vm.glItems">
+                            <option value="">Select Item Type</option>
+                        </select>
+                        <div class="text-danger" ng-show="inventoryForm.glItemInventoryAccount.$invalid && inventoryForm.glItemInventoryAccount.$dirty">Please enter Ledger Account.</div>
+                    </div>
+                    <!--<div class="text-danger" ng-show="vm.errors.length > 0" ng-repeat="error in vm.errors track by $index">{{error}}</div>-->
+                </div>
+
+            </div>
+        </fieldset>
+    </form>
+
+    <div class="panel-footer"  style="width:1060px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="btn-toolbar" role="toolbar" aria-label="...">           
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-success" ng-hide="{{vm.feeitem}}" ng-click="vm.save(inventoryForm,vm.feeitem)">
+                            <span class="glyphicon glyphicon-saved"></span> Save & Close
+                        </button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-success" ng-hide="{{!vm.feeitem}}" ng-click="vm.saveEdit(inventoryForm,vm.feeitem)">
+                            <span class="glyphicon glyphicon-saved"></span> Save Changes
+                        </button>
+                    </div>
+
+                    <!--<div class="btn-group">
+                        <button type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-print"></span> Print
+                        </button>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger" ng-click="vm.reset()">
+                            <span class="glyphicon glyphicon-minus-sign"></span> Delete
+                        </button>
+                    </div>-->
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger" ng-click="vm.reset(vm.student)">
+                            <span class="glyphicon glyphicon-remove"></span> Clear
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

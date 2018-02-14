@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1E46E1F8-5BF8-47DD-AA01-D2769BFBC939}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MPay.Service</RootNamespace>
+    <AssemblyName>MPay.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\MPay\bin\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="FoCommon">
+      <HintPath>..\..\..\..\Users\kennymore\Documents\Visual Studio 2013\Projects\ThresholdSIM\SIM\bin\FoCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="OfficeOnline.DataBlock">
+      <HintPath>..\MPay\bin\OfficeOnline.DataBlock.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Addresses\IAddressService.cs" />
+    <Compile Include="Addresses\Impl\AddressService.cs" />
+    <Compile Include="CodeTypes\Impl\CodeTypeService.cs" />
+    <Compile Include="CodeTypes\ICodeTypeService.cs" />
+    <Compile Include="FeeScheduleDtl\IFeeScheduleDtlService.cs" />
+    <Compile Include="FeeScheduleDtl\Impl\FeeScheduleDtlService.cs" />
+    <Compile Include="FeeSchedule\Impl\FeeScheduleService.cs" />
+    <Compile Include="FeeSchedule\IFeeScheduleService.cs" />
+    <Compile Include="LedgerCOA\ILedgerCOAService.cs" />
+    <Compile Include="LedgerCOA\Impl\LedgerCOAService.cs" />
+    <Compile Include="InventoryItems\IInventoryService.cs" />
+    <Compile Include="InventoryItems\Impl\InventoryService.cs" />
+    <Compile Include="Invoices\Impl\InvoiceService.cs" />
+    <Compile Include="Invoices\IInvoiceService.cs" />
+    <Compile Include="Models\InvoiceViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scholarshipsdtl\Impl\ScholarshipdtlService.cs" />
+    <Compile Include="Scholarshipsdtl\IScholarshipdtlService..cs" />
+    <Compile Include="Scholarships\Impl\ScholarshipService.cs" />
+    <Compile Include="Scholarships\IScholarshipService..cs" />
+    <Compile Include="ServiceBase.cs" />
+    <Compile Include="Sessions\Impl\SessionService.cs" />
+    <Compile Include="Sessions\ISessionService.cs" />
+    <Compile Include="Students\IStudentService.cs" />
+    <Compile Include="Students\Impl\StudentService.cs" />
+    <Compile Include="SessionDTL\Impl\SessionDTLService.cs" />
+    <Compile Include="SessionDTL\ISessionDTLService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+    <Folder Include="bin\Release\" />
+    <Folder Include="Customers\" />
+    <Folder Include="Receipts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MPay.Data\MPay.Data.csproj">
+      <Project>{f6cbe52b-a463-4ee7-a148-b2b159c4744b}</Project>
+      <Name>MPay.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MPay.Domain\MPay.Domain.csproj">
+      <Project>{597a5913-d9c5-4897-995c-d302b4665f88}</Project>
+      <Name>MPay.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

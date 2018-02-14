@@ -1,0 +1,77 @@
+﻿
+<div class="row">
+    <form name="coaForm" role="form" novalidate>
+        <fieldset>
+            <legend class="resizer">{{vm.title}} Chart of Account</legend>
+
+            <!--<hr />-->
+            <div class="row">
+                <div class="col-md-5" style="margin-left:2%;">
+                    <div class="form-group" ng-show="{{vm.coaccount}}">
+                        <label class="control-label" for="coaccount">Item Code</label>
+                        <input type="text" id="glAccountNumber" name="glAccountNumber" readonly="readonly" ng-model="vm.coaccount.glAccountNumber" class="form-control" required />
+                    </div>
+                    <div class="form-group" ng-show="{{!vm.coaccount}}"  ng-class="{'has-error':coaForm.glAccountNumber.$invalid}">
+                        <label class="control-label" for="glAccountNumber">GLAccountNumber</label>
+                        <input class="form-control" type="text" name="glAccountNumber" id="glAccountNumber" ng-model="vm.coaccount.glAccountNumber" required />       
+                        <div class="text-danger" ng-show="coaForm.glAccountNumber.$invalid && coaForm.glAccountNumber.$dirty">GLAccount Cannot Be Empty</div>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error':coaForm.glAccountName.$invalid}">
+                        <label class="control-label" for="glAccountName">GLAccountName</label>
+                        <input class="form-control" type="text" name="glAccountName" id="glAccountName" ng-maxlength="30" ng-model="vm.coaccount.glAccountName" required />
+                        <div class="text-danger" ng-show="coaForm.glAccountName.$error.required">GLAccountName Cannot Be Empty</div>
+                        <div class="help-block has-error">
+                            <span ng-show="coaForm.glAccountName.$error.maxlength">Max Of 30chars allowed</span>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error':coaForm.glAccountDescription.$invalid}">
+                        <label class="control-label" for="glAccountName">GLAccountUse</label>
+                        <input class="form-control" type="text" name="glAccountDescription" id="glAccountDescription" ng-model="vm.coaccount.glAccountDescription" required/>
+                        <div class="text-danger" ng-show="coaForm.glAccountDescription.$invalid && coaForm.glAccountDescription.$dirty">GLAccountDesciption Cannot Be Empty</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="glAccountUse">GLAccountUse</label>
+                        <input class="form-control" type="text" name="glAccountUse" id="glAccountUse" ng-model="vm.coaccount.glAccountUse" />
+                    </div>                
+                    <div class="form-group">
+                        <label>GLAccountType</label>
+                        <select class="form-control" ng-model="vm.coaccount.glAccountType">
+                            <option value="B" selected>B</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+        </fieldset>
+    </form>
+
+    <div class="panel-footer" style="width:1060px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="btn-toolbar" role="toolbar" aria-label="...">
+
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-success" ng-hide="{{vm.coaccount}}"  ng-click="vm.save(coaForm, vm.coaccount)">
+                            <span class="glyphicon glyphicon-saved"></span> Save
+                        </button>
+                    </div> 
+
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-success" ng-hide="{{!vm.coaccount}}" ng-click="vm.saveEdit(coaForm, vm.coaccount)">
+                            <span class="glyphicon glyphicon-saved"></span> Save Changes
+                        </button>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger" ng-click="vm.save(coaForm, vm.coaccount)">
+                            <span class="glyphicon glyphicon-remove"></span> Clear
+                        </button>
+                    </div> 
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

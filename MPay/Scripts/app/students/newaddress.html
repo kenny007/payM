@@ -1,0 +1,110 @@
+﻿<md-dialog-container style="width:60%;height:100%;">
+    <md-dialog layout-padding flex="90" ng-cloak style="margin-bottom:50px;">
+        <md-dialog-content class="md-dialog-content">
+            <!--<div class="md-dialog-content">-->
+            <form name="addressForm" role="form" novalidate>
+                <md-subheader class="md-toolbar-tools">
+                    Add Address for:  <b>{{vm.studentRef.lastName + " " + vm.studentRef.firstName}}</b>
+                </md-subheader>
+                <br />
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-lg-6">
+                        <md-input-container class="md-block">
+                            <label>Contact FullName </label>
+                            <input type="text" id="contactFullName" name="contactFullName" placeholder="Contact FullName (required)"
+                                   ng-model="vm.address.contactFullName" required="" />
+                            <span ng-show="addressForm.contactFullName.$invalid && addressForm.contactFullName.$dirty" class="help-block has-error">
+                                Contact FullName is required
+                            </span>
+                        </md-input-container>
+
+                        <md-input-container class="md-icon-float md-block">
+                            <label>Phone Number </label>
+                            <input type="text" id="phoneNumber" name="phoneNumber" ng-model="vm.address.phoneNumber"
+                                   placeholder="080-XXXXXXXX" ui-mask="999-99999999 (required)"
+                                   style="border-color:darkgrey;border-width:medium" required />
+                            <span class="help-block has-error" ng-show="addressForm.phoneNumber.$invalid && addressForm.phoneNumber.$dirty">
+                                Phone Number is required
+                            </span>
+                        </md-input-container>
+
+                        <md-input-container class="md-block">
+                            <label>Factor</label>
+                            <input type="text" id="mobilePhone" name="mobilePhone" placeholder="Mobile Phone (required)" ng-model="vm.address.mobilePhone" class="form-control" />
+                            <div ng-messages="addressForm.mobilePhone.$error" multiple md-auto-hide="false">
+                                <div ng-message="required">
+                                    <b>Mobile Phone</b> is required.
+                                </div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container class="md-block">
+                            <label>Address 1</label>
+                            <textarea type="text" id="addressLine1" name="addressLine1" ng-model="vm.address.addressLine1" class="form-control" required />
+                            <span class="help-block has-error" ng-show="addressForm.addressLine1.$invalid && addressForm.addressLine1.$dirty">Please enter your first name.</span>
+                            <div ng-messages="addressForm.addressLine1.$error" multiple md-auto-hide="false">
+                                <div ng-message="required">
+                                    <b>Mobile Phone</b> is required.
+                                </div>
+                            </div>
+                        </md-input-container>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-lg-6">
+                        <md-input-container class="md-block">
+                            <label>Contact FullName </label>
+                            <input type="text" id="contactFullName" name="contactFullName" placeholder="Contact FullName (required)"
+                                   ng-model="vm.address.contactFullName" required="" />
+                            <span ng-show="addressForm.contactFullName.$invalid && addressForm.contactFullName.$dirty" class="help-block has-error">
+                                Contact FullName is required
+                            </span>
+                        </md-input-container>
+
+                        <md-input-container class="md-icon-float md-block">
+                            <label>Phone Number </label>
+                            <input type="text" id="phoneNumber" name="phoneNumber" ng-model="vm.address.phoneNumber"
+                                   placeholder="080-XXXXXXXX" ui-mask="999-99999999 (required)"
+                                   style="border-color:darkgrey;border-width:medium" required />
+                            <span class="help-block has-error" ng-show="addressForm.phoneNumber.$invalid && addressForm.phoneNumber.$dirty">
+                                Phone Number is required
+                            </span>
+                        </md-input-container>
+
+                        <md-input-container class="md-block">
+                            <label>Factor</label>
+                            <input type="text" id="mobilePhone" name="mobilePhone" placeholder="Mobile Phone (required)" ng-model="vm.address.mobilePhone" class="form-control" />
+                            <div ng-messages="addressForm.mobilePhone.$error" multiple md-auto-hide="false">
+                                <div ng-message="required">
+                                    <b>Mobile Phone</b> is required.
+                                </div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container class="md-block">
+                            <label>Address 1</label>
+                            <textarea type="text" id="addressLine1" name="addressLine1" ng-model="vm.address.addressLine1" class="form-control" required />
+                            <span class="help-block has-error" ng-show="addressForm.addressLine1.$invalid && addressForm.addressLine1.$dirty">Please enter your first name.</span>
+                            <div ng-messages="addressForm.addressLine1.$error" multiple md-auto-hide="false">
+                                <div ng-message="required">
+                                    <b>Mobile Phone</b> is required.
+                                </div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </div>
+            </form>
+            <!--</div>-->
+            <md-button class="md-primary" ng-disabled="addressForm.$invalid" ng-click="vm.addAddress(vm.address)">
+                Add Address
+            </md-button>
+            <md-button ng-click="vm.cancel()">
+                Cancel
+            </md-button>
+            <!--<button class="btn btn-primary" >Save Address</button>
+            <button class="btn btn-danger" >Cancel</button>-->
+        </md-dialog-content>
+
+
+    </md-dialog>
+</md-dialog-container>
+

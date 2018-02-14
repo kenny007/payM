@@ -1,0 +1,58 @@
+﻿<md-dialog layout-padding  flex="69.5" ng-cloak style="margin-bottom:50px;">
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <form name="scholarshipdtlForm" role="form" novalidate>
+                <md-subheader class="md-toolbar-tools"><b>{{title}} Scholarship Detail</b></md-subheader>
+                <br />
+                <md-autocomplete ng-hide="{{scholarshipdtl}}" class="md-block"  ng-disabled="ctrl.isDisabled"
+                                 md-no-cache="ctrl.noCache"
+                                 md-selected-item="ctrl.selectedItem"
+                                 md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+                                 md-search-text="ctrl.searchText"
+                                 md-selected-item-change="ctrl.selectedItemChange(item)"
+                                 md-items="item in ctrl.itemz | filter:ctrl.searchText"
+                                 md-item-text="item.itemName"
+                                 md-min-length="2"
+                                 placeholder="Enter Fee Item">
+                    <md-item-template>
+                        <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.itemName}}</span>
+                    </md-item-template>
+
+                    <md-not-found>
+                        No Item matching "{{ctrl.searchText}}" found.
+                        <!--<a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>-->
+                    </md-not-found>
+                </md-autocomplete>
+
+                <md-input-container ng-hide="{{!scholarshipdtl}}" class="md-block">
+                    <input readonly="readonly" name="itemID" ng-model="scholarshipdtl.itemID">
+                </md-input-container>
+                
+                <md-input-container class="md-block">
+                    <label>Factor</label>
+                    <input style="border-color:darkgrey;border-width:medium" required placeholder="Enter Fee Factor" type="number" name="feeFactor"
+                           ng-model="scholarshipdtl.value" min="0" step="0.1" max="1">
+                    <div ng-messages="scholarshipdtlForm.value.$error" multiple md-auto-hide="false">
+                        <div ng-message="required">
+                            <b>Discount %</b> is required.
+                        </div>
+                        <div ng-message="max">
+                            <b>Maximum value is 1</b>
+                        </div>
+                    </div>
+                </md-input-container>
+
+            </form>
+        </div>
+        <md-button ng-hide="{{scholarshipdtl}}" class="md-primary" ng-click="ctrl.save(scholarshipdtlForm,ctrl.selectedItem,scholarshipdtl)">
+            Add
+        </md-button>
+        <md-button ng-hide="{{!feescheduledtl}}" class="md-primary" ng-click="ctrl.saveEdit(scholarshipdtlForm,scholarshipdtl)">
+            Save changes
+        </md-button>
+        <md-button ng-click="ctrl.cancel()">
+            Cancel
+        </md-button>
+</md-dialog-content>
+</md-dialog>
+

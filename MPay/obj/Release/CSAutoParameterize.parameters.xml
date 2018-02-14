@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-MPay-20160815021656.mdf;Initial Catalog=aspnet-MPay-20160815021656;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Work\\Projects\\MPay\\MPay\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="MPayEntities-Web.config Connection String" description="MPayEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/MpayModel.csdl|res://*/MpayModel.ssdl|res://*/MpayModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=.\SQL2012;initial catalog=MPay;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Work\\Projects\\MPay\\MPay\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MPayEntities']/@connectionString" />
+  </parameter>
+  <parameter name="connectionString-Web.config Connection String" description="connectionString Connection String used in web.config by the application to access the database." defaultValue="Data Source=.\SQL2012;initial catalog=MPay;user id=enterprise;password=ent2003+;multipleactiveresultsets=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Work\\Projects\\MPay\\MPay\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='connectionString']/@connectionString" />
+  </parameter>
+</parameters>

@@ -1,0 +1,770 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MPayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CodeDetail">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodeTypeID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ItemCodeID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+    <Property Name="DataValue" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="DataFormat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayColour" Type="Int64" />
+    <Property Name="CodeOrder" Type="Int32" />
+    <Property Name="SourceID" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsInactive" Type="Boolean" />
+    <Property Name="ItemCodeRef" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="ParentID" Type="Int32" />
+    <Property Name="GlobalID" Type="Guid" Nullable="false" />
+    <Property Name="AuditDateTime" Type="DateTime" Precision="3" />
+    <Property Name="AuditUserID" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CodeType" Relationship="Self.FK_CodeDetail_CodeType" FromRole="CodeDetail" ToRole="CodeType" />
+  </EntityType>
+  <EntityType Name="CodeType">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodeTypeID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SourceID" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsInactive" Type="Boolean" />
+    <Property Name="ItemCodeRef" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="ParentID" Type="Int32" />
+    <Property Name="GlobalID" Type="Guid" Nullable="false" />
+    <Property Name="AuditDateTime" Type="DateTime" Precision="3" />
+    <Property Name="AuditUserID" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CodeDetails" Relationship="Self.FK_CodeDetail_CodeType" FromRole="CodeType" ToRole="CodeDetail" />
+  </EntityType>
+  <EntityType Name="CTAddress">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentID" Type="Int32" Nullable="false" />
+    <Property Name="EntityType" Type="Int32" Nullable="false" />
+    <Property Name="ContactFullName" Type="String" MaxLength="125" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="MobilePhone" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="Fax" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="AddressType" Type="Int32" Nullable="false" />
+    <Property Name="AddressLine1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AddressLine2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CityCode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="Statecode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CustomerName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EmailAddress" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="WebPage" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerSalutation" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerTypeID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="TaxNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="VATNumber" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="CurrencyID" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="GLSalesAccount" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="TermsID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeID" Type="Int32" />
+    <Property Name="TaxGroupID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="CreditRating" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="CreditLimit" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CreditComments" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SignedUpDate" Type="DateTime" Precision="3" />
+    <Property Name="Statements" Type="Boolean" />
+    <Property Name="BillCycleCode" Type="Int32" />
+    <Property Name="SpecialInstructions" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="AccountStatus" Type="Int32" />
+    <Property Name="StatusComment" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="RegionID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="SourceID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="IndustryID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="Confirmed" Type="Boolean" />
+    <Property Name="IsMistCust" Type="Boolean" />
+    <Property Name="ParentID" Type="Int32" />
+    <Property Name="GlobalID" Type="Guid" Nullable="false" />
+    <Property Name="AuditDateTime" Type="DateTime" Precision="3" />
+    <Property Name="AuditUserID" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="InventoryItem">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="ItemTypeID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ItemDescription" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="ItemCategoryID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="ItemFamilyID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="SalesDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PurchaseDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PictureURL" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="LargePictureURL" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="ItemWeight" Type="Double" />
+    <Property Name="ItemWeightMetric" Type="Double" />
+    <Property Name="ItemShipWeight" Type="Int32" />
+    <Property Name="ItemUPCCode" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="ItemEPCCode" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="ItemRFID" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="ItemSize" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ItemSizeCmm" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ItemDimentions" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="ItemDimentionsCmm" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ItemColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ItemNRFColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ItemStyle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ItemNRFStyle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ItemCareInstructions" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="Warehouse" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="ItemLocationX" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="DownloadLocation" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="DownloadPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ItemUOM" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="GLItemSalesAccount" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="GLItemCOGSAccount" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="GLItemInventoryAccount" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="CurrencyID" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="CurrencyExchangeRate" Type="Double" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ItemPricingCode" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="PricingMethods" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="Taxable" Type="Boolean" />
+    <Property Name="VendorID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LeadTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LeadTimeUnit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="ReOrderLevel" Type="Int32" />
+    <Property Name="ReOrderQty" Type="Int32" />
+    <Property Name="BuildTime" Type="Int32" />
+    <Property Name="BuildTimeUnit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="UseageRate" Type="Int32" />
+    <Property Name="UseageRateUnit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="SalesForecast" Type="Int32" />
+    <Property Name="SalesForecastUnit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="CalculatedCover" Type="Int32" />
+    <Property Name="CalculatedCoverUnits" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="IsAssembly" Type="Boolean" />
+    <Property Name="ItemAssembly" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="LIFO" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="LIFOValue" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="LIFOCost" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Average" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="AverageValue" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="AverageCost" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="FIFO" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="FIFOValue" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="FIFOCost" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Expected" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ExpectedValue" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ExpectedCost" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Landed" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="LandedValue" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="LandedCost" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Other" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="OtherValue" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="OtherCost" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Commissionable" Type="Boolean" />
+    <Property Name="CommissionType" Type="Int16" />
+    <Property Name="CommissionPerc" Type="Double" />
+    <Property Name="Approved" Type="Boolean" />
+    <Property Name="ApprovedBy" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="ApprovedDate" Type="DateTime" Precision="3" />
+    <Property Name="EnteredBy" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="TaxGroupID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="TaxPercent" Type="Double" />
+    <Property Name="ShipMethodID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="WeightStyle" Type="Int32" />
+    <Property Name="AllowOverWeight" Type="Boolean" />
+    <Property Name="TaxInclusive" Type="Boolean" />
+    <Property Name="CompanyID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="DivisionID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="DepartmentID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="LedgerChartOfAccount">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GLAccountNumber" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GLAccountName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="GLAccountDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GLAccountUse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GLAccountType" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="GLBalanceType" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="GLNormalBalance" Type="Int32" />
+    <Property Name="GLReportingAccount" Type="Boolean" />
+    <Property Name="GLReportLevel" Type="Int16" />
+    <Property Name="CurrencyID" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="CurrencyExchangeRate" Type="Double" />
+    <Property Name="GLAccountBalance" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="GLAccountBeginningBalance" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="GLOtherNotes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="GLBudgetID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="GLCurrentYearBeginningBalance" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Segment0" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Segment1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Segment2" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Segment3" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Segment4" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Segment5" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Segment6" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Segment7" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Segment8" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Segment9" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="IsQuantity" Type="Boolean" />
+    <Property Name="UOM" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="IsControlAcct" Type="Boolean" />
+    <Property Name="SrceLedgerID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="StructureCode" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="IsInactive" Type="Boolean" />
+    <Property Name="CompanyID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="DivisionID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="DepartmentID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="AuditUserID" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="AuditDatetime" Type="DateTime" Precision="3" />
+    <Property Name="AuditCompanyID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SmTableControl">
+    <Key>
+      <PropertyRef Name="CompanyID" />
+      <PropertyRef Name="DivisionID" />
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CompanyID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DivisionID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CategoryID" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="NextNumber" Type="Int32" Nullable="false" />
+    <Property Name="LastEditDate" Type="DateTime" Precision="3" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SRClass">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClassID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="BuildingID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="StudentsCount" Type="Int32" />
+    <Property Name="TeacherID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="PrefectID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="ScaleID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="ClassOrder" Type="Int32" />
+    <Property Name="AuditCompanyID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="AuditUserID" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="AuditDatetime" Type="DateTime" Precision="3" />
+    <Property Name="CompanyID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="DivisionID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="DepartmentID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SRClassArms" Relationship="Self.FK_SRClassArms_SRClass" FromRole="SRClass" ToRole="SRClassArms" />
+  </EntityType>
+  <EntityType Name="SRClassArm">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentID" Type="Int32" Nullable="false" />
+    <Property Name="Arm" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaxPopulation" Type="Int32" />
+    <Property Name="CurrentPopulation" Type="Int32" />
+    <Property Name="ArmTeacher" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="AuditCompanyID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="AuditUserID" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="AuditDatetime" Type="DateTime" Precision="3" />
+    <Property Name="CompanyID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="DivisionID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="DepartmentID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SRClass" Relationship="Self.FK_SRClassArms_SRClass" FromRole="SRClassArms" ToRole="SRClass" />
+  </EntityType>
+  <EntityType Name="SRFeeScheduleDTL">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentID" Type="Int32" Nullable="false" />
+    <Property Name="ItemID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LedgerAccount" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="FeeAmount" Type="Double" Nullable="false" />
+    <Property Name="Remarks" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Approved" Type="Boolean" />
+    <Property Name="ApprovedBy" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="ApprovedDate" Type="DateTime" Precision="3" />
+    <Property Name="AuditCompanyID" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="AuditUserID" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="MappedItemID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="FeeFactor" Type="Double" Nullable="false" />
+    <Property Name="CompanyID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="DivisionID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="DepartmentID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SRFeeScheduleHdr" Relationship="Self.FK_SRFeeScheduleDTL_SRFeeScheduleHdr" FromRole="SRFeeScheduleDTL" ToRole="SRFeeScheduleHdr" />
+  </EntityType>
+  <EntityType Name="SRFeeScheduleHdr">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ScheduleID" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RuleID" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TotalAmount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Remarks" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Approved" Type="Boolean" />
+    <Property Name="ApprovedBy" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="ApprovedDate" Type="DateTime" Precision="3" />
+    <Property Name="AuditDateTime" Type="DateTime" Precision="3" />
+    <Property Name="AuditCompanyID" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="AuditUserID" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceMode" Type="Int32" Nullable="false" />
+    <Property Name="MappedItemID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="DivisionID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="DepartmentID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SRFeeScheduleDTLs" Relationship="Self.FK_SRFeeScheduleDTL_SRFeeScheduleHdr" FromRole="SRFeeScheduleHdr" ToRole="SRFeeScheduleDTL" />
+  </EntityType>
+  <EntityType Name="SRInvoiceDetail">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentID" Type="Int32" Nullable="false" />
+    <Property Name="LineNumber" Type="Int32" Nullable="false" />
+    <Property Name="ItemID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="ItemUPCCode" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="SerialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ItemUOM" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="DiscountPerc" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="DiscountAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="GLTransAccount" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="CurrencyID" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="CurrencyExchangeRate" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ItemQty" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ItemCost" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ItemUnitPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="AmountPaid" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ScheduledStartDate" Type="DateTime" Precision="3" />
+    <Property Name="ScheduledEndDate" Type="DateTime" Precision="3" />
+    <Property Name="DetailMemo1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DetailMemo2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AuditUserID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="AuditCompanyID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="AuditDatetime" Type="DateTime" Precision="3" />
+    <Property Name="CompanyID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="DivisionID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="DepartmentID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SRInvoiceHeader" Relationship="Self.FK_SRInvoiceDetail_SRInvoiceHeader" FromRole="SRInvoiceDetail" ToRole="SRInvoiceHeader" />
+  </EntityType>
+  <EntityType Name="SRInvoiceHeader">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InvoiceNumber" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TransactionTypeID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="InvoiceNumberRef" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CustomerID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="StudentID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="SessionID" Type="Int32" />
+    <Property Name="TermID" Type="Int32" />
+    <Property Name="ClassID" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="ArmID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="ScheduleID" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="TransOpen" Type="Boolean" />
+    <Property Name="InvoiceDate" Type="DateTime" Precision="3" />
+    <Property Name="InvoiceDueDate" Type="DateTime" Precision="3" />
+    <Property Name="InvoiceCancelDate" Type="DateTime" Precision="3" />
+    <Property Name="SystemDate" Type="DateTime" Precision="3" />
+    <Property Name="TermsID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="CurrencyID" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="CurrencyExchangeRate" Type="Double" />
+    <Property Name="SubTotal" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="DiscountPers" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="DiscountAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="AdjustmentAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="PaymentMethodID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="AmountPaid" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="BalanceDue" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CheckNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CheckDate" Type="DateTime" Precision="3" />
+    <Property Name="Printed" Type="Boolean" />
+    <Property Name="PrintedDate" Type="DateTime" Precision="3" />
+    <Property Name="InvoiceSent" Type="Boolean" />
+    <Property Name="SentCount" Type="Int32" />
+    <Property Name="DateSent" Type="DateTime" Precision="3" />
+    <Property Name="TrackingNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Posted" Type="Boolean" />
+    <Property Name="PostedDate" Type="DateTime" Precision="3" />
+    <Property Name="AllowanceDiscountPerc" Type="Double" />
+    <Property Name="HeaderMemo1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HeaderMemo2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Approved" Type="Boolean" />
+    <Property Name="ApprovedBy" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="ApprovedDate" Type="DateTime" Precision="3" />
+    <Property Name="AuditUserID" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="AuditCompanyID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="AuditDatetime" Type="DateTime" Precision="3" />
+    <Property Name="GLTransactionNumber" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="DiscountCode" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="BatchID" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="DivisionID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="DepartmentID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SRInvoiceDetails" Relationship="Self.FK_SRInvoiceDetail_SRInvoiceHeader" FromRole="SRInvoiceHeader" ToRole="SRInvoiceDetail" />
+  </EntityType>
+  <EntityType Name="SRReceiptsDetail">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentID" Type="Int32" Nullable="false" />
+    <Property Name="ReceiptID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LineNumber" Type="Int32" Nullable="false" />
+    <Property Name="DocumentNumber" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="DocumentDate" Type="DateTime" Precision="3" />
+    <Property Name="AmountDue" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="DiscountTaken" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="WriteOffAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="AppliedAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Cleared" Type="Boolean" />
+    <Property Name="ProjectID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="DetailMemo1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DetailMemo2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AuditCompanyID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="AuditDatetime" Type="DateTime" Precision="3" />
+    <Property Name="CompanyID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DivisionID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DepartmentID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="SRReceiptsHeader" Relationship="Self.FK_SRReceiptsDetail_SRReceiptsHeader" FromRole="SRReceiptsDetail" ToRole="SRReceiptsHeader" />
+  </EntityType>
+  <EntityType Name="SRReceiptsHeader">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReceiptID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ReceiptTypeID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="ReceiptClassID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="ChequeNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="DepSlipNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="StudentID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="Memorize" Type="Boolean" />
+    <Property Name="TransactionDate" Type="DateTime" Precision="3" />
+    <Property Name="SystemDate" Type="DateTime" Precision="3" />
+    <Property Name="DueToDate" Type="DateTime" Precision="3" />
+    <Property Name="CurrencyID" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="CurrencyExchangeRate" Type="Double" />
+    <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="UnAppliedAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="GLBankAccount" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="ReceiptNotes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CreditAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Cleared" Type="Boolean" />
+    <Property Name="Posted" Type="Boolean" />
+    <Property Name="GLTransactionNumber" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="Reconciled" Type="Boolean" />
+    <Property Name="Deposited" Type="Boolean" />
+    <Property Name="IsPrinted" Type="Boolean" />
+    <Property Name="PrintCount" Type="Int32" />
+    <Property Name="HeaderMemo1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HeaderMemo2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HeaderMemo3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Approved" Type="Boolean" />
+    <Property Name="ApprovedBy" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="ApprovedDate" Type="DateTime" Precision="3" />
+    <Property Name="EnteredBy" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="BatchControlNumber" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="BatchControlTotal" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ReferenceID1" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="ReferenceID2" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="RefRevenueCode" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="RefBankID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="PaidInBy" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="SessionID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="TermID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="ClassID" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="FacultyID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="CourseID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DivisionID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DepartmentID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="SRReceiptsDetails" Relationship="Self.FK_SRReceiptsDetail_SRReceiptsHeader" FromRole="SRReceiptsHeader" ToRole="SRReceiptsDetail" />
+  </EntityType>
+  <EntityType Name="SRSchorlarshipSetupDtl">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentID" Type="Int32" Nullable="false" />
+    <Property Name="CompanyID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="DivisionID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="DepartmentID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="ItemID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LineNumber" Type="Int32" Nullable="false" />
+    <Property Name="SchorlarshipType" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Value" Type="Double" Nullable="false" />
+    <Property Name="AuditDateTime" Type="DateTime" Precision="3" />
+    <Property Name="AuditCompanyID" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="AuditUserID" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SRSchorlarshipSetupHdr" Relationship="Self.FK_SRSchorlarshipSetupDtl_SRSchorlarshipSetupHdr" FromRole="SRSchorlarshipSetupDtl" ToRole="SRSchorlarshipSetupHdr" />
+  </EntityType>
+  <EntityType Name="SRSchorlarshipSetupHdr">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="DivisionID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="DepartmentID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="SchorlarshipID" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Amount" Type="Double" Nullable="false" />
+    <Property Name="Partial" Type="Boolean" Nullable="false" />
+    <Property Name="AuditDateTime" Type="DateTime" Precision="3" />
+    <Property Name="AuditCompanyID" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="AuditUserID" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SRSchorlarshipSetupDtls" Relationship="Self.FK_SRSchorlarshipSetupDtl_SRSchorlarshipSetupHdr" FromRole="SRSchorlarshipSetupHdr" ToRole="SRSchorlarshipSetupDtl" />
+  </EntityType>
+  <EntityType Name="SRSession">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SessionID" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="NoOfTerms" Type="Int32" />
+    <Property Name="Remarks" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Approved" Type="Boolean" />
+    <Property Name="ApprovedDate" Type="DateTime" Precision="3" />
+    <Property Name="EnteredBy" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="AuditDateTime" Type="DateTime" Precision="3" />
+    <Property Name="AuditCompanyID" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="AuditUserID" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="DivisionID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="DepartmentID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SRSessionsDTLs" Relationship="Self.FK_SRSessionsDTL_SRSessions" FromRole="SRSessions" ToRole="SRSessionsDTL" />
+  </EntityType>
+  <EntityType Name="SRSessionsDTL">
+    <Key>
+      <PropertyRef Name="RecordID" />
+      <PropertyRef Name="ParentID" />
+      <PropertyRef Name="SubSessionID" />
+    </Key>
+    <Property Name="RecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentID" Type="Int32" Nullable="false" />
+    <Property Name="SubSessionID" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="Remarks" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="AuditDateTime" Type="DateTime" Precision="3" />
+    <Property Name="AuditCompanyID" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="AuditUserID" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="NoOfDays" Type="Int32" />
+    <Property Name="MidBreakStartDate" Type="DateTime" Precision="3" />
+    <Property Name="MidBreakEndDate" Type="DateTime" Precision="3" />
+    <Property Name="CompanyID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="DivisionID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="DepartmentID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SRSession" Relationship="Self.FK_SRSessionsDTL_SRSessions" FromRole="SRSessionsDTL" ToRole="SRSessions" />
+  </EntityType>
+  <EntityType Name="SRStudent">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MatricNo" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="SchoolID" Type="Int32" Nullable="false" />
+    <Property Name="CustomerID" Type="Int32" />
+    <Property Name="ProgramType" Type="Int32" />
+    <Property Name="StudentType" Type="Int32" />
+    <Property Name="StudentCategory" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Nationality" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="StateCode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="LGAID" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="Int32" />
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <Property Name="AbilityStatus" Type="Int32" />
+    <Property Name="NationalID" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="EmailAddress" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="MobilePhone" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="EntryMode" Type="Int32" />
+    <Property Name="PictureID" Type="Int32" />
+    <Property Name="AdmissionDate" Type="DateTime" Precision="3" />
+    <Property Name="DOB" Type="DateTime" Precision="3" />
+    <Property Name="EntryLevel" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="CurrentLevel" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="MajorCourse" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="Arm" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="CGPA" Type="Single" />
+    <Property Name="AdvisorID" Type="Int32" />
+    <Property Name="OpeningBalance" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="AmountDueToDate" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="AmountPaidToDate" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Remarks" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ScholarshipStatus" Type="Int32" />
+    <Property Name="ScholarshipID" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="StatusDate" Type="DateTime" Precision="3" />
+    <Property Name="FacultyID" Type="Int32" />
+    <Property Name="DepartmentID" Type="Int32" />
+    <Property Name="PayTemplateNo" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="ParentID" Type="Int32" />
+    <Property Name="GlobalID" Type="Guid" Nullable="false" />
+    <Property Name="AuditDateTime" Type="DateTime" Precision="3" />
+    <Property Name="AuditUserID" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="JambRegNo" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_CodeDetail_CodeType">
+    <End Role="CodeType" Type="Self.CodeType" Multiplicity="0..1" />
+    <End Role="CodeDetail" Type="Self.CodeDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CodeType">
+        <PropertyRef Name="RecordID" />
+      </Principal>
+      <Dependent Role="CodeDetail">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SRClassArms_SRClass">
+    <End Role="SRClass" Type="Self.SRClass" Multiplicity="1" />
+    <End Role="SRClassArms" Type="Self.SRClassArm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SRClass">
+        <PropertyRef Name="RecordID" />
+      </Principal>
+      <Dependent Role="SRClassArms">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SRFeeScheduleDTL_SRFeeScheduleHdr">
+    <End Role="SRFeeScheduleHdr" Type="Self.SRFeeScheduleHdr" Multiplicity="1" />
+    <End Role="SRFeeScheduleDTL" Type="Self.SRFeeScheduleDTL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SRFeeScheduleHdr">
+        <PropertyRef Name="RecordID" />
+      </Principal>
+      <Dependent Role="SRFeeScheduleDTL">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SRInvoiceDetail_SRInvoiceHeader">
+    <End Role="SRInvoiceHeader" Type="Self.SRInvoiceHeader" Multiplicity="1" />
+    <End Role="SRInvoiceDetail" Type="Self.SRInvoiceDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SRInvoiceHeader">
+        <PropertyRef Name="RecordID" />
+      </Principal>
+      <Dependent Role="SRInvoiceDetail">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SRReceiptsDetail_SRReceiptsHeader">
+    <End Role="SRReceiptsHeader" Type="Self.SRReceiptsHeader" Multiplicity="1" />
+    <End Role="SRReceiptsDetail" Type="Self.SRReceiptsDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SRReceiptsHeader">
+        <PropertyRef Name="RecordID" />
+      </Principal>
+      <Dependent Role="SRReceiptsDetail">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SRSchorlarshipSetupDtl_SRSchorlarshipSetupHdr">
+    <End Role="SRSchorlarshipSetupHdr" Type="Self.SRSchorlarshipSetupHdr" Multiplicity="1" />
+    <End Role="SRSchorlarshipSetupDtl" Type="Self.SRSchorlarshipSetupDtl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SRSchorlarshipSetupHdr">
+        <PropertyRef Name="RecordID" />
+      </Principal>
+      <Dependent Role="SRSchorlarshipSetupDtl">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SRSessionsDTL_SRSessions">
+    <End Role="SRSessions" Type="Self.SRSession" Multiplicity="1" />
+    <End Role="SRSessionsDTL" Type="Self.SRSessionsDTL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SRSessions">
+        <PropertyRef Name="RecordID" />
+      </Principal>
+      <Dependent Role="SRSessionsDTL">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MPayEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CodeDetails" EntityType="Self.CodeDetail" />
+    <EntitySet Name="CodeTypes" EntityType="Self.CodeType" />
+    <EntitySet Name="CTAddresses" EntityType="Self.CTAddress" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="InventoryItems" EntityType="Self.InventoryItem" />
+    <EntitySet Name="LedgerChartOfAccounts" EntityType="Self.LedgerChartOfAccount" />
+    <EntitySet Name="SmTableControls" EntityType="Self.SmTableControl" />
+    <EntitySet Name="SRClasses" EntityType="Self.SRClass" />
+    <EntitySet Name="SRClassArms" EntityType="Self.SRClassArm" />
+    <EntitySet Name="SRFeeScheduleDTLs" EntityType="Self.SRFeeScheduleDTL" />
+    <EntitySet Name="SRFeeScheduleHdrs" EntityType="Self.SRFeeScheduleHdr" />
+    <EntitySet Name="SRInvoiceDetails" EntityType="Self.SRInvoiceDetail" />
+    <EntitySet Name="SRInvoiceHeaders" EntityType="Self.SRInvoiceHeader" />
+    <EntitySet Name="SRReceiptsDetails" EntityType="Self.SRReceiptsDetail" />
+    <EntitySet Name="SRReceiptsHeaders" EntityType="Self.SRReceiptsHeader" />
+    <EntitySet Name="SRSchorlarshipSetupDtls" EntityType="Self.SRSchorlarshipSetupDtl" />
+    <EntitySet Name="SRSchorlarshipSetupHdrs" EntityType="Self.SRSchorlarshipSetupHdr" />
+    <EntitySet Name="SRSessions" EntityType="Self.SRSession" />
+    <EntitySet Name="SRSessionsDTLs" EntityType="Self.SRSessionsDTL" />
+    <EntitySet Name="SRStudents" EntityType="Self.SRStudent" />
+    <AssociationSet Name="FK_CodeDetail_CodeType" Association="Self.FK_CodeDetail_CodeType">
+      <End Role="CodeType" EntitySet="CodeTypes" />
+      <End Role="CodeDetail" EntitySet="CodeDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SRClassArms_SRClass" Association="Self.FK_SRClassArms_SRClass">
+      <End Role="SRClass" EntitySet="SRClasses" />
+      <End Role="SRClassArms" EntitySet="SRClassArms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SRFeeScheduleDTL_SRFeeScheduleHdr" Association="Self.FK_SRFeeScheduleDTL_SRFeeScheduleHdr">
+      <End Role="SRFeeScheduleHdr" EntitySet="SRFeeScheduleHdrs" />
+      <End Role="SRFeeScheduleDTL" EntitySet="SRFeeScheduleDTLs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SRInvoiceDetail_SRInvoiceHeader" Association="Self.FK_SRInvoiceDetail_SRInvoiceHeader">
+      <End Role="SRInvoiceHeader" EntitySet="SRInvoiceHeaders" />
+      <End Role="SRInvoiceDetail" EntitySet="SRInvoiceDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SRReceiptsDetail_SRReceiptsHeader" Association="Self.FK_SRReceiptsDetail_SRReceiptsHeader">
+      <End Role="SRReceiptsHeader" EntitySet="SRReceiptsHeaders" />
+      <End Role="SRReceiptsDetail" EntitySet="SRReceiptsDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SRSchorlarshipSetupDtl_SRSchorlarshipSetupHdr" Association="Self.FK_SRSchorlarshipSetupDtl_SRSchorlarshipSetupHdr">
+      <End Role="SRSchorlarshipSetupHdr" EntitySet="SRSchorlarshipSetupHdrs" />
+      <End Role="SRSchorlarshipSetupDtl" EntitySet="SRSchorlarshipSetupDtls" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SRSessionsDTL_SRSessions" Association="Self.FK_SRSessionsDTL_SRSessions">
+      <End Role="SRSessions" EntitySet="SRSessions" />
+      <End Role="SRSessionsDTL" EntitySet="SRSessionsDTLs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

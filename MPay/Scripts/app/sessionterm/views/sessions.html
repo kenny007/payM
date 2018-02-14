@@ -1,0 +1,97 @@
+﻿<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>Add Address for:  <b>{{studentRef.lastName + " " + studentRef.firstName}}</b></h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-body">
+            <form name="addressForm" role="form" novalidate>
+                <!--<fieldset>
+                    <legend>Add Address for {{studentObj.lastName + " " + studentObj.firstName}}</legend>-->
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-lg-6">
+                            <div class="form-group" ng-class="{'has-error':addressForm.contactFullName.$invalid}">
+                                <label class="control-label" for="firstName">Contact FullName</label>
+                                <input type="text" id="contactFullName" name="contactFullName" placeholder="Contact FullName (required)" ng-model="address.contactFullName" class="form-control" required="" />
+                                <span ng-show="addressForm.contactFullName.$invalid && addressForm.contactFullName.$dirty" class="help-block has-error">
+                                    Contact FullName is required
+                                </span>
+                            </div>
+
+                            <div class="form-group" ng-class="{'has-error':addressForm.phoneNumber.$invalid}">
+                                <label class="control-label" for="phoneNumber">Phone Number</label>
+                                <input type="text" id="phoneNumber" name="phoneNumber" ng-model="address.phoneNumber"
+                                        placeholder="080-XXXXXXXX"  ui-mask="999-99999999 (required)" 
+                                        class="form-control" required />
+                                <span class="help-block has-error" ng-show="addressForm.phoneNumber.$invalid && addressForm.phoneNumber.$dirty">
+                                    Phone Number is required
+                                </span>
+                            </div>
+
+                            <div class="form-group" ng-class="{'has-error':addressForm.mobilePhone.$invalid}">
+                                <label class="control-label" for="mobilePhone">Mobile Phone</label>
+                                <input type="text" id="mobilePhone" name="mobilePhone" placeholder="Mobile Phone (required)" ng-model="address.mobilePhone" class="form-control" />
+                                <!--<span class="help-block has-error" ng-show="addressForm.mobilePhone.$invalid && addressForm.mobilePhone.$dirty">
+                                    Mobile Phone is required
+                                </span>-->
+                            </div>
+
+                            <!--<div class="form-group" ng-class="{'has-error':addressForm.fax.$invalid}">
+                                <label class="control-label" for="lastName">Fax</label>
+                                <input type="text" id="fax" name="fax" placeholder="Fax" ng-model="address.fax" class="form-control" />
+                            </div>-->
+
+                            <div class="form-group" ng-class="{'has-error':addressForm.addressLine1.$invalid}">
+                                <label class="control-label" for="addressLine1">Address 1</label>
+                                <textarea type="text" id="addressLine1" name="addressLine1" ng-model="address.addressLine1" class="form-control" required />
+                                <span class="help-block has-error" ng-show="addressForm.addressLine1.$invalid && addressForm.addressLine1.$dirty">Please enter your first name.</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-lg-6">                       
+                            <div class="form-group" ng-class="{'has-error':addressForm.cityCode.$invalid}">
+                                <label class="control-label" for="cityCode">City Code</label>
+                                <input type="text" id="cityCode" name="cityCode" ng-model="address.cityCode"
+                                       ng-minlength="1" ng-maxlength="3" class="form-control" />
+                                <span class="help-block has-error">
+                                    <span ng-show="addressForm.cityCode.$error.maxlength">Max of 3chars</span>
+                                </span>
+                            </div>
+
+                            <div class="form-group" ng-class="{'has-error':addressForm.studentType.$invalid}">
+                                <label class="control-label" for="country">Country</label>
+                                <select class="form-control" id="country" ng-change="getState(student.studentType)" name="country" ng-model="address.country" ng-options="c.recordID as c.itemCodeID for c in getstudtype">
+                                    <option value="">Select Country</option>
+                                </select>
+                                <!--   <div class="text-danger" ng-show="addressForm.country.$invalid && addressForm.country.$dirty">Please enter your last name.</div>-->
+                            </div>
+
+                            <div class="form-group" ng-class="{'has-error':addressForm.stateCode.$invalid}">
+                                <label class="control-label" for="stateCode">State</label>
+                                <select class="form-control" id="stateCode" ng-change="activateDForm(student.studentType)" name="stateCode" ng-model="address.stateCode" ng-options="c.recordID as c.itemCodeID for c in getstudtype">
+                                    <option value="">Select State</option>
+                                </select>
+                                <!--     <div class="text-danger" ng-show="addressForm.stateCode.$invalid && addressForm.stateCode.$dirty">Please enter your last name.</div>-->
+                            </div>
+
+                            <div class="form-group" ng-class="{'has-error':addressForm.addressLine2.$invalid}">
+                                <label class="control-label" for="addressLine2">Address 2</label>
+                                <textarea type="text" id="addressLine2" name="addressLine2" ng-model="address.addressLine2" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                <!--</fieldset>-->
+            </form>
+
+        </div>
+        <hr />
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-disabled="addressForm.$invalid" ng-click="addAddress(address)">Save Address</button>
+        <button class="btn btn-danger" ng-click="cancel(address)">Cancel</button>
+    </div>
+      
+    </div>
+</div>

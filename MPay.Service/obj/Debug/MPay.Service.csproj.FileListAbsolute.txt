@@ -1,0 +1,15 @@
+C:\Work\Projects\MPay\MPay.Service\obj\Debug\MPay.Service.csprojResolveAssemblyReference.cache
+C:\Work\Projects\MPay\MPay.Service\bin\Debug\MPay.Service.dll.config
+C:\Work\Projects\MPay\MPay.Service\bin\Debug\MPay.Service.dll
+C:\Work\Projects\MPay\MPay.Service\bin\Debug\MPay.Service.pdb
+C:\Work\Projects\MPay\MPay.Service\bin\Debug\EntityFramework.dll
+C:\Work\Projects\MPay\MPay.Service\bin\Debug\FoCommon.dll
+C:\Work\Projects\MPay\MPay.Service\bin\Debug\MPay.Data.dll
+C:\Work\Projects\MPay\MPay.Service\bin\Debug\MPay.Domain.dll
+C:\Work\Projects\MPay\MPay.Service\bin\Debug\OfficeOnline.DataBlock.dll
+C:\Work\Projects\MPay\MPay.Service\bin\Debug\FoSystem.dll
+C:\Work\Projects\MPay\MPay.Service\bin\Debug\MPay.Data.pdb
+C:\Work\Projects\MPay\MPay.Service\bin\Debug\MPay.Domain.pdb
+C:\Work\Projects\MPay\MPay.Service\bin\Debug\EntityFramework.xml
+C:\Work\Projects\MPay\MPay.Service\obj\Debug\MPay.Service.dll
+C:\Work\Projects\MPay\MPay.Service\obj\Debug\MPay.Service.pdb

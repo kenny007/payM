@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0fa1e7f20f5a4b1e939706905c1f8828" Name="Diagram1">
+        <EntityTypeShape EntityType="MPayModel.CodeDetail" Width="1.5" PointX="3" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="MPayModel.CodeType" Width="1.5" PointX="0.75" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MPayModel.CTAddress" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MPayModel.Customer" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MPayModel.InventoryItem" Width="1.5" PointX="7.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MPayModel.LedgerChartOfAccount" Width="1.5" PointX="9.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MPayModel.SmTableControl" Width="1.5" PointX="7.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MPayModel.SRClass" Width="1.5" PointX="15.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MPayModel.SRClassArm" Width="1.5" PointX="18" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MPayModel.SRFeeScheduleDTL" Width="1.5" PointX="15" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MPayModel.SRFeeScheduleHdr" Width="1.5" PointX="12.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="MPayModel.SRInvoiceDetail" Width="1.5" PointX="13" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MPayModel.SRInvoiceHeader" Width="1.5" PointX="10.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MPayModel.SRReceiptsDetail" Width="1.5" PointX="8" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="MPayModel.SRReceiptsHeader" Width="1.5" PointX="5.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MPayModel.SRSchorlarshipSetupDtl" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MPayModel.SRSchorlarshipSetupHdr" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MPayModel.SRSession" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MPayModel.SRSessionsDTL" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MPayModel.SRStudent" Width="1.5" PointX="17.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="MPayModel.FK_CodeDetail_CodeType" ManuallyRouted="false" />
+        <AssociationConnector Association="MPayModel.FK_SRClassArms_SRClass" ManuallyRouted="false" />
+        <AssociationConnector Association="MPayModel.FK_SRFeeScheduleDTL_SRFeeScheduleHdr" ManuallyRouted="false" />
+        <AssociationConnector Association="MPayModel.FK_SRInvoiceDetail_SRInvoiceHeader" ManuallyRouted="false" />
+        <AssociationConnector Association="MPayModel.FK_SRReceiptsDetail_SRReceiptsHeader" ManuallyRouted="false" />
+        <AssociationConnector Association="MPayModel.FK_SRSchorlarshipSetupDtl_SRSchorlarshipSetupHdr" ManuallyRouted="false" />
+        <AssociationConnector Association="MPayModel.FK_SRSessionsDTL_SRSessions" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

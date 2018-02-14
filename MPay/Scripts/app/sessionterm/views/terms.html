@@ -1,0 +1,83 @@
+﻿<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="row">
+                <div class="col-lg-9">
+                    <h3>{{vm.title}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal" name="sessiondtlForm" novalidate>
+                <!--<fieldset>
+        <legend>New Program</legend>-->
+                <div class="form-group"
+                     ng-class="{'has-error':sessiondtlForm.subSessionID.$invalid &&
+                                    sessiondtlForm.subSessionID.$dirty}">
+                    <label class="col-md-3 control-label" for="subSessionID">Term/Semester ID</label>
+
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="subSessionID" name="subSessionID" ng-model="vm.term.subSessionID" required>
+                        <span class="help-block has-error"
+                              ng-show="sessiondtlForm.subSessionID.$invalid ">
+                            Term/Semester ID is required
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-class="{'has-error':sessiondtlForm.description.$invalid &&
+                                    sessiondtlForm.description.$dirty}">
+                    <label class="col-md-3 control-label" for="description">Description</label>
+                    <div class="col-md-8">
+                        <input class="form-control" name="description" id="description" type="text" ng-model="vm.term.description" required />
+                        <span class="help-block has-error"
+                              ng-show="sessiondtlForm.description.$invalid ">
+                            Description is required
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="form-group" ng-class="{'has-error':sessiondtlForm.startDate.$invalid &&
+                                    sessiondtlForm.startDate.$dirty}">
+                    <label class="col-md-3 control-label" for="startDate">Start Date</label>
+                    <div class="col-md-8">
+                        <input class="form-control" id="startDate" type="text" uib-datepicker-popup is-open="vm.popup1.opened"
+                               datepicker-options="dateOptions" ng-model="vm.term.startDate" />
+                        <span class="help-block has-error"
+                              ng-show="sessiondtlForm.startDate.$invalid ">
+                            Start Date is required
+                        </span>
+                        <span class="input-group-btn" ng-show="sessiondtlForm.startDate.$invalid ">
+                            <button class="btn btn-default" ng-click="vm.openstartDate()"><i class="glyphicon glyphicon-calendar" /></button>
+                        </span>
+                    </div>
+
+                </div>
+
+                <!--<h5>Start Date:</h5>
+                <p class="input-group" ng-class="{'has-error':sessiondtlForm.startDate.$invalid}">
+                    <input class="form-control" id="startDate" type="text" uib-datepicker-popup is-open="vm.popup1.opened"
+                           datepicker-options="dateOptions" ng-model="vm.term.startDate" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" ng-click="vm.openstartDate()"><i class="glyphicon glyphicon-calendar" /></button>
+                    </span>
+                </p>
+
+                <h5>End Date:</h5>
+                <p class="input-group" ng-class="{'has-error':sessiondtlForm.endDate.$invalid}">
+                    <input class="form-control" id="endDate" type="text" uib-datepicker-popup is-open="vm.popup2.opened"
+                           datepicker-options="dateOptions" ng-model="vm.term.endDate" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" ng-click="vm.openendDate()"><i class="glyphicon glyphicon-calendar" /></button>
+                    </span>
+                </p>-->
+            </form>
+        </div>
+        <hr/>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-disabled="sessiondtlForm.$invalid" ng-click="vm.addTerm(sessiondtlForm, vm.term)">Create</button>
+            <button class="btn btn-danger" ng-click="vm.cancel(codes)">Cancel</button>
+        </div>
+    </div>
+</div>

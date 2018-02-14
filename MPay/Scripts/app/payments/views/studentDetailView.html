@@ -1,0 +1,157 @@
+﻿<div class="panel panel-primary">
+    <div class="panel-heading" style="font-size:large">New Student</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="btn-toolbar" role="toolbar" aria-label="...">
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-success btn-lg" ng-disabled="studentForm.$invalid" ng-click="save(student)">
+                            <span class="glyphicon glyphicon-saved"></span> Save & Close
+                        </button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary btn-lg">
+                            <span class="glyphicon glyphicon-open"></span> Save & New
+                        </button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-lg">
+                            <span class="glyphicon glyphicon-print"></span> Print
+                        </button>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-info btn-lg active">
+                            <span class="glyphicon glyphicon-import"></span> Import
+                        </button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-success btn-lg active">
+                            <span class="glyphicon glyphicon-export"></span> Export
+                        </button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger btn-lg">
+                            <span class="glyphicon glyphicon-remove"></span> Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <form name="studentForm" role="form" novalidate>
+                <fieldset>
+                    <legend>Basic Student Information</legend>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-5" style="margin-left:2%;">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" name="firstName" ng-model="student.firstName" class="form-control" required="" />
+
+                                <div ng-show="studentForm.$submitted || studentForm.firstName.$touched">
+                                    <div class="text-danger" ng-show="studentForm.firstName.$error.required">Please enter your firstname.</div>
+                                </div>
+                                <!--<div class="help-block" ng-show="studentForm.firstName.$error.required && studentForm.firstName.$dirty">Please enter your first name.</div>-->
+                            </div>
+
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" name="lastName" ng-model="student.lastName" class="form-control" required="" />
+                                <div ng-show="studentForm.$submitted || studentForm.lastName.$touched">
+                                    <div class="text-danger" ng-show="studentForm.lastName.$error.required && studentForm.lastName.$dirty">Please enter your last name.</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" name="emailAddress" ng-model="student.emailAddress" class="form-control" required ng-pattern="/^[a-zA-Z0-9'._%+-]+@[a-zA-Z0-9-][a-zA-Z0-9.-]*\.[a-zA-Z]{2,9}$/" />
+                                <div class="text-danger" ng-show="studentForm.emailAddress.$error.required && studentForm.emailAddress.$dirty">Please enter your email address.</div>
+                                <div class="text-danger" ng-show="studentForm.emailAddress.$error.pattern && studentForm.emailAddress.$dirty">Invalid email address.</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Phone. No</label>
+                                <input type="number" name="mobilePhone" min="11" maxlength="11" ng-model="student.mobilePhone" class="form-control" required />
+                                <div class="text-danger" ng-show="studentForm.mobilePhone.$error.required && studentForm.mobilePhone.$dirty">Please enter your password.</div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5" style="margin-left:2%;">
+                            <div class="form-group">
+                                <label>Reg. Number</label>
+                                <input type="text" name="matricNo" ng-model="student.matricNo" class="form-control" required />
+                                <div class="text-danger" ng-show="studentForm.matricNo.$error.required && studentForm.matricNo.$dirty">Please enter your first name.</div>
+                            </div>
+                            <div class="form-group">
+                                <label>Department</label>
+                                <select class="form-control" ng-model="student.departmentId" ng-options="c.recordID as c.itemCodeID for c in departments" required>
+                                    <option value="">Select Department</option>
+                                </select>
+                                <div class="text-danger" ng-show="studentForm.department.$error.required && studentForm.department.$dirty">Department cannot be empty.</div>
+                            </div>
+                            <div class="form-group">
+                                <label>Program</label>
+                                <select class="form-control" ng-model="student.programType" ng-options="c.recordID as c.itemCodeID for c in getprogtype" required>
+                                    <option value="">Select Program</option>
+                                </select>
+                                <div class="text-danger" ng-show="studentForm.programType.$error.required && studentForm.programType.$dirty">Program Type cannot be empty.</div>
+                            </div>
+                            <div class="form-group">
+                                <label>Student Type</label>
+                                <select class="form-control" ng-model="student.studentType" ng-options="c.recordID as c.itemCodeID for c in getstudtype" required>
+                                    <option value="">Select Program</option>
+                                </select>
+                                <div class="text-danger" ng-show="studentForm.studentType.$error.required && studentForm.studentType.$dirty">Please enter your last name.</div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="panel-footer">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="btn-toolbar" role="toolbar" aria-label="...">
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-success btn-lg" ng-disabled="studentForm.$invalid" ng-click="save(student)" ng-click="save(student)">
+                            <span class="glyphicon glyphicon-saved"></span> Save & Close
+                        </button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary btn-lg">
+                            <span class="glyphicon glyphicon-open"></span> Save & New
+                        </button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-lg">
+                            <span class="glyphicon glyphicon-print"></span> Print
+                        </button>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-info btn-lg active">
+                            <span class="glyphicon glyphicon-import"></span> Import
+                        </button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-success btn-lg active">
+                            <span class="glyphicon glyphicon-export"></span> Export
+                        </button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger btn-lg">
+                            <span class="glyphicon glyphicon-remove"></span> Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

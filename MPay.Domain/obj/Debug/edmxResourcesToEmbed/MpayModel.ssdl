@@ -1,0 +1,756 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MPayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CodeDetail">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CodeTypeID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ItemCodeID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="160" />
+    <Property Name="DataValue" Type="nvarchar" MaxLength="80" />
+    <Property Name="DataFormat" Type="nvarchar" MaxLength="50" />
+    <Property Name="DisplayColour" Type="bigint" />
+    <Property Name="CodeOrder" Type="int" />
+    <Property Name="SourceID" Type="nvarchar" MaxLength="1" Nullable="false" />
+    <Property Name="IsInactive" Type="bit" />
+    <Property Name="ItemCodeRef" Type="nvarchar" MaxLength="36" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="GlobalID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AuditDateTime" Type="datetime" />
+    <Property Name="AuditUserID" Type="nvarchar" MaxLength="24" />
+  </EntityType>
+  <EntityType Name="CodeType">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CodeTypeID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+    <Property Name="SourceID" Type="nvarchar" MaxLength="1" Nullable="false" />
+    <Property Name="IsInactive" Type="bit" />
+    <Property Name="ItemCodeRef" Type="nvarchar" MaxLength="36" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="GlobalID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AuditDateTime" Type="datetime" />
+    <Property Name="AuditUserID" Type="nvarchar" MaxLength="24" />
+  </EntityType>
+  <EntityType Name="CTAddress">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentID" Type="int" Nullable="false" />
+    <Property Name="EntityType" Type="int" Nullable="false" />
+    <Property Name="ContactFullName" Type="nvarchar" MaxLength="125" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="24" />
+    <Property Name="MobilePhone" Type="nvarchar" MaxLength="24" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="24" />
+    <Property Name="AddressType" Type="int" Nullable="false" />
+    <Property Name="AddressLine1" Type="nvarchar" MaxLength="50" />
+    <Property Name="AddressLine2" Type="nvarchar" MaxLength="50" />
+    <Property Name="CityCode" Type="nvarchar" MaxLength="3" />
+    <Property Name="Statecode" Type="nvarchar" MaxLength="3" />
+    <Property Name="Country" Type="nvarchar" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="80" />
+    <Property Name="CustomerPhone" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmailAddress" Type="nvarchar" MaxLength="80" />
+    <Property Name="WebPage" Type="nvarchar" MaxLength="80" />
+    <Property Name="CustomerFirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustomerLastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustomerSalutation" Type="nvarchar" MaxLength="10" />
+    <Property Name="CustomerTypeID" Type="nvarchar" MaxLength="36" />
+    <Property Name="TaxNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="VATNumber" Type="nvarchar" MaxLength="36" />
+    <Property Name="CurrencyID" Type="nvarchar" MaxLength="3" />
+    <Property Name="GLSalesAccount" Type="nvarchar" MaxLength="36" />
+    <Property Name="TermsID" Type="nvarchar" MaxLength="36" />
+    <Property Name="EmployeeID" Type="int" />
+    <Property Name="TaxGroupID" Type="nvarchar" MaxLength="36" />
+    <Property Name="CreditRating" Type="nvarchar" MaxLength="30" />
+    <Property Name="CreditLimit" Type="money" />
+    <Property Name="CreditComments" Type="nvarchar" MaxLength="250" />
+    <Property Name="SignedUpDate" Type="datetime" />
+    <Property Name="Statements" Type="bit" />
+    <Property Name="BillCycleCode" Type="int" />
+    <Property Name="SpecialInstructions" Type="nvarchar" MaxLength="255" />
+    <Property Name="AccountStatus" Type="int" />
+    <Property Name="StatusComment" Type="nvarchar" MaxLength="255" />
+    <Property Name="RegionID" Type="nvarchar" MaxLength="36" />
+    <Property Name="SourceID" Type="nvarchar" MaxLength="36" />
+    <Property Name="IndustryID" Type="nvarchar" MaxLength="36" />
+    <Property Name="Confirmed" Type="bit" />
+    <Property Name="IsMistCust" Type="bit" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="GlobalID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AuditDateTime" Type="datetime" />
+    <Property Name="AuditUserID" Type="nvarchar" MaxLength="24" />
+  </EntityType>
+  <EntityType Name="InventoryItems">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="ItemTypeID" Type="nvarchar" MaxLength="36" />
+    <Property Name="ItemName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ItemDescription" Type="nvarchar" MaxLength="80" />
+    <Property Name="ItemCategoryID" Type="nvarchar" MaxLength="36" />
+    <Property Name="ItemFamilyID" Type="nvarchar" MaxLength="36" />
+    <Property Name="SalesDescription" Type="nvarchar" MaxLength="50" />
+    <Property Name="PurchaseDescription" Type="nvarchar" MaxLength="50" />
+    <Property Name="PictureURL" Type="nvarchar" MaxLength="80" />
+    <Property Name="LargePictureURL" Type="nvarchar" MaxLength="80" />
+    <Property Name="ItemWeight" Type="float" />
+    <Property Name="ItemWeightMetric" Type="float" />
+    <Property Name="ItemShipWeight" Type="int" />
+    <Property Name="ItemUPCCode" Type="nvarchar" MaxLength="12" />
+    <Property Name="ItemEPCCode" Type="nvarchar" MaxLength="12" />
+    <Property Name="ItemRFID" Type="nvarchar" MaxLength="80" />
+    <Property Name="ItemSize" Type="nvarchar" MaxLength="50" />
+    <Property Name="ItemSizeCmm" Type="nvarchar" MaxLength="50" />
+    <Property Name="ItemDimentions" Type="nvarchar" MaxLength="10" />
+    <Property Name="ItemDimentionsCmm" Type="nvarchar" MaxLength="50" />
+    <Property Name="ItemColor" Type="nvarchar" MaxLength="50" />
+    <Property Name="ItemNRFColor" Type="nvarchar" MaxLength="50" />
+    <Property Name="ItemStyle" Type="nvarchar" MaxLength="50" />
+    <Property Name="ItemNRFStyle" Type="nvarchar" MaxLength="50" />
+    <Property Name="ItemCareInstructions" Type="nvarchar" MaxLength="80" />
+    <Property Name="Warehouse" Type="nvarchar" MaxLength="36" />
+    <Property Name="ItemLocationX" Type="nvarchar" MaxLength="36" />
+    <Property Name="DownloadLocation" Type="nvarchar" MaxLength="120" />
+    <Property Name="DownloadPassword" Type="nvarchar" MaxLength="20" />
+    <Property Name="ItemUOM" Type="nvarchar" MaxLength="15" />
+    <Property Name="GLItemSalesAccount" Type="nvarchar" MaxLength="36" />
+    <Property Name="GLItemCOGSAccount" Type="nvarchar" MaxLength="36" />
+    <Property Name="GLItemInventoryAccount" Type="nvarchar" MaxLength="36" />
+    <Property Name="CurrencyID" Type="nvarchar" MaxLength="3" />
+    <Property Name="CurrencyExchangeRate" Type="float" />
+    <Property Name="Price" Type="money" />
+    <Property Name="ItemPricingCode" Type="nvarchar" MaxLength="36" />
+    <Property Name="PricingMethods" Type="nvarchar" MaxLength="36" />
+    <Property Name="Taxable" Type="bit" />
+    <Property Name="VendorID" Type="nvarchar" MaxLength="50" />
+    <Property Name="LeadTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="LeadTimeUnit" Type="nvarchar" MaxLength="10" />
+    <Property Name="ReOrderLevel" Type="int" />
+    <Property Name="ReOrderQty" Type="int" />
+    <Property Name="BuildTime" Type="int" />
+    <Property Name="BuildTimeUnit" Type="nvarchar" MaxLength="10" />
+    <Property Name="UseageRate" Type="int" />
+    <Property Name="UseageRateUnit" Type="nvarchar" MaxLength="10" />
+    <Property Name="SalesForecast" Type="int" />
+    <Property Name="SalesForecastUnit" Type="nvarchar" MaxLength="10" />
+    <Property Name="CalculatedCover" Type="int" />
+    <Property Name="CalculatedCoverUnits" Type="nvarchar" MaxLength="10" />
+    <Property Name="IsAssembly" Type="bit" />
+    <Property Name="ItemAssembly" Type="nvarchar" MaxLength="36" />
+    <Property Name="LIFO" Type="money" />
+    <Property Name="LIFOValue" Type="money" />
+    <Property Name="LIFOCost" Type="money" />
+    <Property Name="Average" Type="money" />
+    <Property Name="AverageValue" Type="money" />
+    <Property Name="AverageCost" Type="money" />
+    <Property Name="FIFO" Type="money" />
+    <Property Name="FIFOValue" Type="money" />
+    <Property Name="FIFOCost" Type="money" />
+    <Property Name="Expected" Type="money" />
+    <Property Name="ExpectedValue" Type="money" />
+    <Property Name="ExpectedCost" Type="money" />
+    <Property Name="Landed" Type="money" />
+    <Property Name="LandedValue" Type="money" />
+    <Property Name="LandedCost" Type="char" MaxLength="10" />
+    <Property Name="Other" Type="money" />
+    <Property Name="OtherValue" Type="money" />
+    <Property Name="OtherCost" Type="money" />
+    <Property Name="Commissionable" Type="bit" />
+    <Property Name="CommissionType" Type="smallint" />
+    <Property Name="CommissionPerc" Type="float" />
+    <Property Name="Approved" Type="bit" />
+    <Property Name="ApprovedBy" Type="nvarchar" MaxLength="36" />
+    <Property Name="ApprovedDate" Type="datetime" />
+    <Property Name="EnteredBy" Type="nvarchar" MaxLength="36" />
+    <Property Name="TaxGroupID" Type="nvarchar" MaxLength="36" />
+    <Property Name="TaxPercent" Type="float" />
+    <Property Name="ShipMethodID" Type="nvarchar" MaxLength="36" />
+    <Property Name="WeightStyle" Type="int" />
+    <Property Name="AllowOverWeight" Type="bit" />
+    <Property Name="TaxInclusive" Type="bit" />
+    <Property Name="CompanyID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DivisionID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DepartmentID" Type="nvarchar" MaxLength="36" />
+  </EntityType>
+  <EntityType Name="LedgerChartOfAccounts">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GLAccountNumber" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="GLAccountName" Type="nvarchar" MaxLength="30" />
+    <Property Name="GLAccountDescription" Type="nvarchar" MaxLength="50" />
+    <Property Name="GLAccountUse" Type="nvarchar" MaxLength="50" />
+    <Property Name="GLAccountType" Type="nvarchar" MaxLength="36" />
+    <Property Name="GLBalanceType" Type="nvarchar" MaxLength="36" />
+    <Property Name="GLNormalBalance" Type="int" />
+    <Property Name="GLReportingAccount" Type="bit" />
+    <Property Name="GLReportLevel" Type="smallint" />
+    <Property Name="CurrencyID" Type="nvarchar" MaxLength="3" />
+    <Property Name="CurrencyExchangeRate" Type="float" />
+    <Property Name="GLAccountBalance" Type="money" />
+    <Property Name="GLAccountBeginningBalance" Type="money" />
+    <Property Name="GLOtherNotes" Type="nvarchar" MaxLength="255" />
+    <Property Name="GLBudgetID" Type="nvarchar" MaxLength="36" />
+    <Property Name="GLCurrentYearBeginningBalance" Type="money" />
+    <Property Name="Segment0" Type="nvarchar" MaxLength="15" />
+    <Property Name="Segment1" Type="nvarchar" MaxLength="15" />
+    <Property Name="Segment2" Type="nvarchar" MaxLength="15" />
+    <Property Name="Segment3" Type="nvarchar" MaxLength="15" />
+    <Property Name="Segment4" Type="nvarchar" MaxLength="15" />
+    <Property Name="Segment5" Type="nvarchar" MaxLength="15" />
+    <Property Name="Segment6" Type="nvarchar" MaxLength="15" />
+    <Property Name="Segment7" Type="nvarchar" MaxLength="15" />
+    <Property Name="Segment8" Type="nvarchar" MaxLength="15" />
+    <Property Name="Segment9" Type="nvarchar" MaxLength="15" />
+    <Property Name="IsQuantity" Type="bit" />
+    <Property Name="UOM" Type="nvarchar" MaxLength="15" />
+    <Property Name="IsControlAcct" Type="bit" />
+    <Property Name="SrceLedgerID" Type="nvarchar" MaxLength="10" />
+    <Property Name="StructureCode" Type="nvarchar" MaxLength="24" />
+    <Property Name="IsInactive" Type="bit" />
+    <Property Name="CompanyID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DivisionID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DepartmentID" Type="nvarchar" MaxLength="36" />
+    <Property Name="AuditUserID" Type="nvarchar" MaxLength="24" />
+    <Property Name="AuditDatetime" Type="datetime" />
+    <Property Name="AuditCompanyID" Type="nvarchar" MaxLength="36" />
+  </EntityType>
+  <EntityType Name="SmTableControl">
+    <Key>
+      <PropertyRef Name="CompanyID" />
+      <PropertyRef Name="DivisionID" />
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CompanyID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="DivisionID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="CategoryID" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="NextNumber" Type="int" Nullable="false" />
+    <Property Name="LastEditDate" Type="datetime" />
+    <Property Name="CreationDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SRClass">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClassID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="40" />
+    <Property Name="BuildingID" Type="nvarchar" MaxLength="36" />
+    <Property Name="StudentsCount" Type="int" />
+    <Property Name="TeacherID" Type="nvarchar" MaxLength="36" />
+    <Property Name="PrefectID" Type="nvarchar" MaxLength="36" />
+    <Property Name="CategoryID" Type="nvarchar" MaxLength="36" />
+    <Property Name="ScaleID" Type="nvarchar" MaxLength="36" />
+    <Property Name="ClassOrder" Type="int" />
+    <Property Name="AuditCompanyID" Type="nvarchar" MaxLength="36" />
+    <Property Name="AuditUserID" Type="nvarchar" MaxLength="24" />
+    <Property Name="AuditDatetime" Type="datetime" />
+    <Property Name="CompanyID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DivisionID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DepartmentID" Type="nvarchar" MaxLength="36" />
+  </EntityType>
+  <EntityType Name="SRClassArms">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentID" Type="int" Nullable="false" />
+    <Property Name="Arm" Type="nvarchar" MaxLength="16" Nullable="false" />
+    <Property Name="MaxPopulation" Type="int" />
+    <Property Name="CurrentPopulation" Type="int" />
+    <Property Name="ArmTeacher" Type="nvarchar" MaxLength="30" />
+    <Property Name="AuditCompanyID" Type="nvarchar" MaxLength="36" />
+    <Property Name="AuditUserID" Type="nvarchar" MaxLength="24" />
+    <Property Name="AuditDatetime" Type="datetime" />
+    <Property Name="CompanyID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DivisionID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DepartmentID" Type="nvarchar" MaxLength="36" />
+  </EntityType>
+  <EntityType Name="SRFeeScheduleDTL">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentID" Type="int" Nullable="false" />
+    <Property Name="ItemID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="LedgerAccount" Type="nvarchar" MaxLength="36" />
+    <Property Name="FeeAmount" Type="float" Nullable="false" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="255" />
+    <Property Name="Approved" Type="bit" />
+    <Property Name="ApprovedBy" Type="nvarchar" MaxLength="36" />
+    <Property Name="ApprovedDate" Type="datetime" />
+    <Property Name="AuditCompanyID" Type="nvarchar" MaxLength="24" />
+    <Property Name="AuditUserID" Type="nvarchar" MaxLength="24" />
+    <Property Name="MappedItemID" Type="nvarchar" MaxLength="36" />
+    <Property Name="FeeFactor" Type="float" Nullable="false" />
+    <Property Name="CompanyID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DivisionID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DepartmentID" Type="nvarchar" MaxLength="36" />
+  </EntityType>
+  <EntityType Name="SRFeeScheduleHdr">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ScheduleID" Type="nvarchar" MaxLength="16" Nullable="false" />
+    <Property Name="RuleID" Type="nvarchar" MaxLength="16" />
+    <Property Name="Description" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="TotalAmount" Type="money" Nullable="false" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="255" />
+    <Property Name="Approved" Type="bit" />
+    <Property Name="ApprovedBy" Type="nvarchar" MaxLength="36" />
+    <Property Name="ApprovedDate" Type="datetime" />
+    <Property Name="AuditDateTime" Type="datetime" />
+    <Property Name="AuditCompanyID" Type="nvarchar" MaxLength="24" />
+    <Property Name="AuditUserID" Type="nvarchar" MaxLength="24" />
+    <Property Name="InvoiceMode" Type="int" Nullable="false" />
+    <Property Name="MappedItemID" Type="nvarchar" MaxLength="36" />
+    <Property Name="CompanyID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DivisionID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DepartmentID" Type="nvarchar" MaxLength="36" />
+  </EntityType>
+  <EntityType Name="SRInvoiceDetail">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentID" Type="int" Nullable="false" />
+    <Property Name="LineNumber" Type="int" Nullable="false" />
+    <Property Name="ItemID" Type="nvarchar" MaxLength="36" />
+    <Property Name="ItemUPCCode" Type="nvarchar" MaxLength="12" />
+    <Property Name="SerialNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="ItemUOM" Type="nvarchar" MaxLength="25" />
+    <Property Name="Description" Type="nvarchar" MaxLength="80" />
+    <Property Name="DiscountPerc" Type="money" />
+    <Property Name="DiscountAmount" Type="money" />
+    <Property Name="GLTransAccount" Type="nvarchar" MaxLength="36" />
+    <Property Name="CurrencyID" Type="nvarchar" MaxLength="3" />
+    <Property Name="CurrencyExchangeRate" Type="money" />
+    <Property Name="ItemQty" Type="money" />
+    <Property Name="ItemCost" Type="money" />
+    <Property Name="ItemUnitPrice" Type="money" />
+    <Property Name="Total" Type="money" />
+    <Property Name="AmountPaid" Type="money" />
+    <Property Name="ScheduledStartDate" Type="datetime" />
+    <Property Name="ScheduledEndDate" Type="datetime" />
+    <Property Name="DetailMemo1" Type="nvarchar" MaxLength="50" />
+    <Property Name="DetailMemo2" Type="nvarchar" MaxLength="50" />
+    <Property Name="AuditUserID" Type="nvarchar" MaxLength="36" />
+    <Property Name="AuditCompanyID" Type="nvarchar" MaxLength="36" />
+    <Property Name="AuditDatetime" Type="datetime" />
+    <Property Name="CompanyID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DivisionID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DepartmentID" Type="nvarchar" MaxLength="36" />
+  </EntityType>
+  <EntityType Name="SRInvoiceHeader">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InvoiceNumber" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="TransactionTypeID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="InvoiceNumberRef" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="CustomerID" Type="nvarchar" MaxLength="36" />
+    <Property Name="StudentID" Type="nvarchar" MaxLength="36" />
+    <Property Name="SessionID" Type="int" />
+    <Property Name="TermID" Type="int" />
+    <Property Name="ClassID" Type="nvarchar" MaxLength="24" />
+    <Property Name="ArmID" Type="nvarchar" MaxLength="10" />
+    <Property Name="ScheduleID" Type="nvarchar" MaxLength="24" />
+    <Property Name="TransOpen" Type="bit" />
+    <Property Name="InvoiceDate" Type="datetime" />
+    <Property Name="InvoiceDueDate" Type="datetime" />
+    <Property Name="InvoiceCancelDate" Type="datetime" />
+    <Property Name="SystemDate" Type="datetime" />
+    <Property Name="TermsID" Type="nvarchar" MaxLength="36" />
+    <Property Name="CurrencyID" Type="nvarchar" MaxLength="3" />
+    <Property Name="CurrencyExchangeRate" Type="float" />
+    <Property Name="SubTotal" Type="money" />
+    <Property Name="DiscountPers" Type="money" />
+    <Property Name="DiscountAmount" Type="money" />
+    <Property Name="AdjustmentAmount" Type="money" />
+    <Property Name="Total" Type="money" />
+    <Property Name="PaymentMethodID" Type="nvarchar" MaxLength="36" />
+    <Property Name="AmountPaid" Type="money" />
+    <Property Name="BalanceDue" Type="money" />
+    <Property Name="CheckNumber" Type="nvarchar" MaxLength="20" />
+    <Property Name="CheckDate" Type="datetime" />
+    <Property Name="Printed" Type="bit" />
+    <Property Name="PrintedDate" Type="datetime" />
+    <Property Name="InvoiceSent" Type="bit" />
+    <Property Name="SentCount" Type="int" />
+    <Property Name="DateSent" Type="datetime" />
+    <Property Name="TrackingNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Posted" Type="bit" />
+    <Property Name="PostedDate" Type="datetime" />
+    <Property Name="AllowanceDiscountPerc" Type="float" />
+    <Property Name="HeaderMemo1" Type="nvarchar" MaxLength="50" />
+    <Property Name="HeaderMemo2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Approved" Type="bit" />
+    <Property Name="ApprovedBy" Type="nvarchar" MaxLength="36" />
+    <Property Name="ApprovedDate" Type="datetime" />
+    <Property Name="AuditUserID" Type="nvarchar" MaxLength="24" />
+    <Property Name="AuditCompanyID" Type="nvarchar" MaxLength="36" />
+    <Property Name="AuditDatetime" Type="datetime" />
+    <Property Name="GLTransactionNumber" Type="nvarchar" MaxLength="36" />
+    <Property Name="DiscountCode" Type="nvarchar" MaxLength="24" />
+    <Property Name="BatchID" Type="nvarchar" MaxLength="24" />
+    <Property Name="DivisionID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DepartmentID" Type="nvarchar" MaxLength="36" />
+  </EntityType>
+  <EntityType Name="SRReceiptsDetail">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentID" Type="int" Nullable="false" />
+    <Property Name="ReceiptID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="LineNumber" Type="int" Nullable="false" />
+    <Property Name="DocumentNumber" Type="nvarchar" MaxLength="36" />
+    <Property Name="DocumentDate" Type="datetime" />
+    <Property Name="AmountDue" Type="money" />
+    <Property Name="DiscountTaken" Type="money" />
+    <Property Name="WriteOffAmount" Type="money" />
+    <Property Name="AppliedAmount" Type="money" />
+    <Property Name="Cleared" Type="bit" />
+    <Property Name="ProjectID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DetailMemo1" Type="nvarchar" MaxLength="50" />
+    <Property Name="DetailMemo2" Type="nvarchar" MaxLength="50" />
+    <Property Name="AuditCompanyID" Type="nvarchar" MaxLength="36" />
+    <Property Name="AuditDatetime" Type="datetime" />
+    <Property Name="CompanyID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="DivisionID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="DepartmentID" Type="nvarchar" MaxLength="36" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SRReceiptsHeader">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReceiptID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="ReceiptTypeID" Type="nvarchar" MaxLength="36" />
+    <Property Name="ReceiptClassID" Type="nvarchar" MaxLength="36" />
+    <Property Name="ChequeNumber" Type="nvarchar" MaxLength="20" />
+    <Property Name="DepSlipNumber" Type="nvarchar" MaxLength="20" />
+    <Property Name="StudentID" Type="nvarchar" MaxLength="36" />
+    <Property Name="Memorize" Type="bit" />
+    <Property Name="TransactionDate" Type="datetime" />
+    <Property Name="SystemDate" Type="datetime" />
+    <Property Name="DueToDate" Type="datetime" />
+    <Property Name="CurrencyID" Type="nvarchar" MaxLength="3" />
+    <Property Name="CurrencyExchangeRate" Type="float" />
+    <Property Name="Amount" Type="money" />
+    <Property Name="UnAppliedAmount" Type="money" />
+    <Property Name="GLBankAccount" Type="nvarchar" MaxLength="36" />
+    <Property Name="ReceiptNotes" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreditAmount" Type="money" />
+    <Property Name="Cleared" Type="bit" />
+    <Property Name="Posted" Type="bit" />
+    <Property Name="GLTransactionNumber" Type="nvarchar" MaxLength="36" />
+    <Property Name="Reconciled" Type="bit" />
+    <Property Name="Deposited" Type="bit" />
+    <Property Name="IsPrinted" Type="bit" />
+    <Property Name="PrintCount" Type="int" />
+    <Property Name="HeaderMemo1" Type="nvarchar" MaxLength="50" />
+    <Property Name="HeaderMemo2" Type="nvarchar" MaxLength="50" />
+    <Property Name="HeaderMemo3" Type="nvarchar" MaxLength="50" />
+    <Property Name="Approved" Type="bit" />
+    <Property Name="ApprovedBy" Type="nvarchar" MaxLength="36" />
+    <Property Name="ApprovedDate" Type="datetime" />
+    <Property Name="EnteredBy" Type="nvarchar" MaxLength="36" />
+    <Property Name="BatchControlNumber" Type="nvarchar" MaxLength="36" />
+    <Property Name="BatchControlTotal" Type="money" />
+    <Property Name="ReferenceID1" Type="nvarchar" MaxLength="36" />
+    <Property Name="ReferenceID2" Type="nvarchar" MaxLength="36" />
+    <Property Name="RefRevenueCode" Type="nvarchar" MaxLength="36" />
+    <Property Name="RefBankID" Type="nvarchar" MaxLength="36" />
+    <Property Name="PaidInBy" Type="nvarchar" MaxLength="36" />
+    <Property Name="SessionID" Type="nvarchar" MaxLength="36" />
+    <Property Name="TermID" Type="nvarchar" MaxLength="36" />
+    <Property Name="ClassID" Type="nvarchar" MaxLength="16" />
+    <Property Name="FacultyID" Type="nvarchar" MaxLength="36" />
+    <Property Name="CourseID" Type="nvarchar" MaxLength="36" />
+    <Property Name="CompanyID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="DivisionID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="DepartmentID" Type="nvarchar" MaxLength="36" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SRSchorlarshipSetupDtl">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentID" Type="int" Nullable="false" />
+    <Property Name="CompanyID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DivisionID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DepartmentID" Type="nvarchar" MaxLength="36" />
+    <Property Name="ItemID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="LineNumber" Type="int" Nullable="false" />
+    <Property Name="SchorlarshipType" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="Value" Type="float" Nullable="false" />
+    <Property Name="AuditDateTime" Type="datetime" />
+    <Property Name="AuditCompanyID" Type="nvarchar" MaxLength="24" />
+    <Property Name="AuditUserID" Type="nvarchar" MaxLength="24" />
+  </EntityType>
+  <EntityType Name="SRSchorlarshipSetupHdr">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DivisionID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DepartmentID" Type="nvarchar" MaxLength="36" />
+    <Property Name="SchorlarshipID" Type="nvarchar" MaxLength="16" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+    <Property Name="Partial" Type="bit" Nullable="false" />
+    <Property Name="AuditDateTime" Type="datetime" />
+    <Property Name="AuditCompanyID" Type="nvarchar" MaxLength="24" />
+    <Property Name="AuditUserID" Type="nvarchar" MaxLength="24" />
+  </EntityType>
+  <EntityType Name="SRSessions">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SessionID" Type="nvarchar" MaxLength="16" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="NoOfTerms" Type="int" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="255" />
+    <Property Name="Approved" Type="bit" />
+    <Property Name="ApprovedDate" Type="datetime" />
+    <Property Name="EnteredBy" Type="nvarchar" MaxLength="36" />
+    <Property Name="AuditDateTime" Type="datetime" />
+    <Property Name="AuditCompanyID" Type="nvarchar" MaxLength="24" />
+    <Property Name="AuditUserID" Type="nvarchar" MaxLength="24" />
+    <Property Name="CompanyID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DivisionID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DepartmentID" Type="nvarchar" MaxLength="36" />
+  </EntityType>
+  <EntityType Name="SRSessionsDTL">
+    <Key>
+      <PropertyRef Name="RecordID" />
+      <PropertyRef Name="ParentID" />
+      <PropertyRef Name="SubSessionID" />
+    </Key>
+    <Property Name="RecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentID" Type="int" Nullable="false" />
+    <Property Name="SubSessionID" Type="nvarchar" MaxLength="16" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="255" />
+    <Property Name="AuditDateTime" Type="datetime" />
+    <Property Name="AuditCompanyID" Type="nvarchar" MaxLength="24" />
+    <Property Name="AuditUserID" Type="nvarchar" MaxLength="24" />
+    <Property Name="NoOfDays" Type="int" />
+    <Property Name="MidBreakStartDate" Type="datetime" />
+    <Property Name="MidBreakEndDate" Type="datetime" />
+    <Property Name="CompanyID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DivisionID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DepartmentID" Type="nvarchar" MaxLength="36" />
+  </EntityType>
+  <EntityType Name="SRStudent">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="MatricNo" Type="nvarchar" MaxLength="36" />
+    <Property Name="SchoolID" Type="int" Nullable="false" />
+    <Property Name="CustomerID" Type="int" />
+    <Property Name="ProgramType" Type="int" />
+    <Property Name="StudentType" Type="int" />
+    <Property Name="StudentCategory" Type="nvarchar" MaxLength="36" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="MiddleName" Type="nvarchar" MaxLength="40" />
+    <Property Name="Nationality" Type="nvarchar" MaxLength="3" />
+    <Property Name="StateCode" Type="nvarchar" MaxLength="3" />
+    <Property Name="LGAID" Type="nvarchar" MaxLength="3" />
+    <Property Name="Gender" Type="int" />
+    <Property Name="StatusID" Type="int" Nullable="false" />
+    <Property Name="AbilityStatus" Type="int" />
+    <Property Name="NationalID" Type="nvarchar" MaxLength="24" />
+    <Property Name="EmailAddress" Type="nvarchar" MaxLength="80" />
+    <Property Name="MobilePhone" Type="nvarchar" MaxLength="24" />
+    <Property Name="EntryMode" Type="int" />
+    <Property Name="PictureID" Type="int" />
+    <Property Name="AdmissionDate" Type="datetime" />
+    <Property Name="DOB" Type="datetime" />
+    <Property Name="EntryLevel" Type="nvarchar" MaxLength="16" />
+    <Property Name="CurrentLevel" Type="nvarchar" MaxLength="16" />
+    <Property Name="MajorCourse" Type="nvarchar" MaxLength="16" />
+    <Property Name="Arm" Type="nvarchar" MaxLength="2" />
+    <Property Name="CGPA" Type="real" />
+    <Property Name="AdvisorID" Type="int" />
+    <Property Name="OpeningBalance" Type="money" Nullable="false" />
+    <Property Name="AmountDueToDate" Type="money" Nullable="false" />
+    <Property Name="AmountPaidToDate" Type="money" Nullable="false" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="255" />
+    <Property Name="ScholarshipStatus" Type="int" />
+    <Property Name="ScholarshipID" Type="nvarchar" MaxLength="24" />
+    <Property Name="StatusDate" Type="datetime" />
+    <Property Name="FacultyID" Type="int" />
+    <Property Name="DepartmentID" Type="int" />
+    <Property Name="PayTemplateNo" Type="nvarchar" MaxLength="36" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="GlobalID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AuditDateTime" Type="datetime" />
+    <Property Name="AuditUserID" Type="nvarchar" MaxLength="24" />
+    <Property Name="JambRegNo" Type="nvarchar" MaxLength="36" />
+  </EntityType>
+  <Association Name="FK_CodeDetail_CodeType">
+    <End Role="CodeType" Type="Self.CodeType" Multiplicity="0..1" />
+    <End Role="CodeDetail" Type="Self.CodeDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CodeType">
+        <PropertyRef Name="RecordID" />
+      </Principal>
+      <Dependent Role="CodeDetail">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SRClassArms_SRClass">
+    <End Role="SRClass" Type="Self.SRClass" Multiplicity="1" />
+    <End Role="SRClassArms" Type="Self.SRClassArms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SRClass">
+        <PropertyRef Name="RecordID" />
+      </Principal>
+      <Dependent Role="SRClassArms">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SRFeeScheduleDTL_SRFeeScheduleHdr">
+    <End Role="SRFeeScheduleHdr" Type="Self.SRFeeScheduleHdr" Multiplicity="1" />
+    <End Role="SRFeeScheduleDTL" Type="Self.SRFeeScheduleDTL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SRFeeScheduleHdr">
+        <PropertyRef Name="RecordID" />
+      </Principal>
+      <Dependent Role="SRFeeScheduleDTL">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SRInvoiceDetail_SRInvoiceHeader">
+    <End Role="SRInvoiceHeader" Type="Self.SRInvoiceHeader" Multiplicity="1" />
+    <End Role="SRInvoiceDetail" Type="Self.SRInvoiceDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SRInvoiceHeader">
+        <PropertyRef Name="RecordID" />
+      </Principal>
+      <Dependent Role="SRInvoiceDetail">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SRReceiptsDetail_SRReceiptsHeader">
+    <End Role="SRReceiptsHeader" Type="Self.SRReceiptsHeader" Multiplicity="1" />
+    <End Role="SRReceiptsDetail" Type="Self.SRReceiptsDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SRReceiptsHeader">
+        <PropertyRef Name="RecordID" />
+      </Principal>
+      <Dependent Role="SRReceiptsDetail">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SRSchorlarshipSetupDtl_SRSchorlarshipSetupHdr">
+    <End Role="SRSchorlarshipSetupHdr" Type="Self.SRSchorlarshipSetupHdr" Multiplicity="1" />
+    <End Role="SRSchorlarshipSetupDtl" Type="Self.SRSchorlarshipSetupDtl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SRSchorlarshipSetupHdr">
+        <PropertyRef Name="RecordID" />
+      </Principal>
+      <Dependent Role="SRSchorlarshipSetupDtl">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SRSessionsDTL_SRSessions">
+    <End Role="SRSessions" Type="Self.SRSessions" Multiplicity="1" />
+    <End Role="SRSessionsDTL" Type="Self.SRSessionsDTL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SRSessions">
+        <PropertyRef Name="RecordID" />
+      </Principal>
+      <Dependent Role="SRSessionsDTL">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MPayModelStoreContainer">
+    <EntitySet Name="CodeDetail" EntityType="Self.CodeDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CodeType" EntityType="Self.CodeType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CTAddress" EntityType="Self.CTAddress" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InventoryItems" EntityType="Self.InventoryItems" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LedgerChartOfAccounts" EntityType="Self.LedgerChartOfAccounts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SmTableControl" EntityType="Self.SmTableControl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SRClass" EntityType="Self.SRClass" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SRClassArms" EntityType="Self.SRClassArms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SRFeeScheduleDTL" EntityType="Self.SRFeeScheduleDTL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SRFeeScheduleHdr" EntityType="Self.SRFeeScheduleHdr" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SRInvoiceDetail" EntityType="Self.SRInvoiceDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SRInvoiceHeader" EntityType="Self.SRInvoiceHeader" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SRReceiptsDetail" EntityType="Self.SRReceiptsDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SRReceiptsHeader" EntityType="Self.SRReceiptsHeader" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SRSchorlarshipSetupDtl" EntityType="Self.SRSchorlarshipSetupDtl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SRSchorlarshipSetupHdr" EntityType="Self.SRSchorlarshipSetupHdr" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SRSessions" EntityType="Self.SRSessions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SRSessionsDTL" EntityType="Self.SRSessionsDTL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SRStudent" EntityType="Self.SRStudent" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CodeDetail_CodeType" Association="Self.FK_CodeDetail_CodeType">
+      <End Role="CodeType" EntitySet="CodeType" />
+      <End Role="CodeDetail" EntitySet="CodeDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SRClassArms_SRClass" Association="Self.FK_SRClassArms_SRClass">
+      <End Role="SRClass" EntitySet="SRClass" />
+      <End Role="SRClassArms" EntitySet="SRClassArms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SRFeeScheduleDTL_SRFeeScheduleHdr" Association="Self.FK_SRFeeScheduleDTL_SRFeeScheduleHdr">
+      <End Role="SRFeeScheduleHdr" EntitySet="SRFeeScheduleHdr" />
+      <End Role="SRFeeScheduleDTL" EntitySet="SRFeeScheduleDTL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SRInvoiceDetail_SRInvoiceHeader" Association="Self.FK_SRInvoiceDetail_SRInvoiceHeader">
+      <End Role="SRInvoiceHeader" EntitySet="SRInvoiceHeader" />
+      <End Role="SRInvoiceDetail" EntitySet="SRInvoiceDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SRReceiptsDetail_SRReceiptsHeader" Association="Self.FK_SRReceiptsDetail_SRReceiptsHeader">
+      <End Role="SRReceiptsHeader" EntitySet="SRReceiptsHeader" />
+      <End Role="SRReceiptsDetail" EntitySet="SRReceiptsDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SRSchorlarshipSetupDtl_SRSchorlarshipSetupHdr" Association="Self.FK_SRSchorlarshipSetupDtl_SRSchorlarshipSetupHdr">
+      <End Role="SRSchorlarshipSetupHdr" EntitySet="SRSchorlarshipSetupHdr" />
+      <End Role="SRSchorlarshipSetupDtl" EntitySet="SRSchorlarshipSetupDtl" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SRSessionsDTL_SRSessions" Association="Self.FK_SRSessionsDTL_SRSessions">
+      <End Role="SRSessions" EntitySet="SRSessions" />
+      <End Role="SRSessionsDTL" EntitySet="SRSessionsDTL" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

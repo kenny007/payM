@@ -1,0 +1,10 @@
+C:\Work\Projects\MPay\MPay.Domain\bin\Debug\MPay.Domain.dll.config
+C:\Work\Projects\MPay\MPay.Domain\bin\Debug\MPay.Domain.dll
+C:\Work\Projects\MPay\MPay.Domain\bin\Debug\MPay.Domain.pdb
+C:\Work\Projects\MPay\MPay.Domain\bin\Debug\EntityFramework.dll
+C:\Work\Projects\MPay\MPay.Domain\bin\Debug\EntityFramework.SqlServer.dll
+C:\Work\Projects\MPay\MPay.Domain\bin\Debug\EntityFramework.xml
+C:\Work\Projects\MPay\MPay.Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\Work\Projects\MPay\MPay.Domain\obj\Debug\MPay.Domain.csprojResolveAssemblyReference.cache
+C:\Work\Projects\MPay\MPay.Domain\obj\Debug\MPay.Domain.dll
+C:\Work\Projects\MPay\MPay.Domain\obj\Debug\MPay.Domain.pdb

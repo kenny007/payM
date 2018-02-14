@@ -1,0 +1,142 @@
+﻿/*/*body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+./*ui-autocomplete {
+    z-index: 5000;
+}
+ .md-virtual-repeat-container.md-autocomplete-suggestions-container {
+    z-index:500;
+ }
+ .md-virtual-repeat-container.md-autocomplete-suggestions-container li {
+    z-index:500;
+ }*/
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+legend.newresize{
+   width: 1035px;
+   margin-left: 15px;
+}
+
+form legend.resizer{
+   width: 1015px;
+   margin-left: 25px;
+}
+.hrsizer{
+    width: 1025px; 
+    margin-left: 25px;
+}
+.modgrid{
+    width:91%;
+}
+.gridinv{
+    width:600px;height:320px;
+}
+.gridscholar{
+    width:400px;height:320px;
+}
+.gridinvstud{
+    width:1040px;height:450px;
+}
+.grid-align {
+    text-align: center;
+}
+.grid{
+    width: 1050px;
+    /*height: 37px;*/
+  }
+
+.ui-grid-vcenter div {
+  background-color: yellow !important;
+  text-align:center;
+  position: relative;
+  top: 50%;
+   -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+/*.dl-horizontal dt {
+    white-space: normal;
+}*/
+
+/* Set width on the form input elements since they're 100% wide by default */
+/*input,
+select,
+textarea {
+    max-width: 280px;
+}**/
+ /*/
+/*Tabbed Content*/
+#exTab1 .tab-content {
+  color : white;
+  background-color: #428bca;
+  padding : 5px 15px;
+}
+
+#exTab2 h3 {
+  color : white;
+  background-color: #428bca;
+  padding : 5px 15px;
+}
+
+/* remove border radius for the tab */
+
+#exTab1 .nav-pills > li > a {
+  border-radius: 0;
+}
+
+/* change border radius for the tab , apply corners on top*/
+
+#exTab3 .nav-pills > li > a {
+  border-radius: 4px 4px 0 0 ;
+}
+
+#exTab3 .tab-content {
+  color : white;
+  background-color: #428bca;
+  padding : 5px 15px;
+}
+
+/*form {
+    background-color: #A4C8E8;
+    border-radius: 2px;
+    box-shadow: 0 1px 1px #ccc;
+    color: #404040;
+    font-size: 16px;
+    padding: 30px 20px;
+}*/
+
+/*form legend {
+    color: #404040;
+    font-size: 25px;
+    font-family: 'Cookie', cursive;
+    font-weight: normal;
+    line-height: 1;
+    text-shadow: 0 3px 0 rgba(0,0,0,0.1);
+}*/
+
+.wizard a {
+    background: #efefef;
+    display: inline-block;
+    margin-right: 5px;
+    min-width: 150px;
+    outline: none;
+    padding: 10px 40px 10px;
+    position: relative;
+    text-decoration: none;
+}
+.wizard .active {
+    background: #007ACC;
+    color: #fff; text-decoration: none;
+}
+.modal {
+display: block;
+}

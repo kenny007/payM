@@ -1,0 +1,48 @@
+﻿<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="row">
+                <div class="col-lg-9">
+                    <h3>Add New Program</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal" name="programForm" novalidate>
+                <!--<fieldset>
+        <legend>New Program</legend>-->
+                <div class="form-group"
+                     ng-class="{'has-error':programForm.itemCodeID.$invalid &&
+                                    programForm.itemCodeID.$dirty}">
+                    <label class="col-md-3 control-label" for="itemCodeID">ItemCode</label>
+
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="itemCodeID" name="itemCodeID" ng-model="vm.codes.itemCodeID" required>
+                        <span class="help-block has-error"
+                              ng-show="programForm.itemCodeID.$invalid ">
+                            Program Code is required
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-class="{'has-error':programForm.description.$invalid &&
+                                    programForm.description.$dirty}">
+                    <label class="col-md-3 control-label" for="description">Description</label>
+                    <div class="col-md-8">
+                        <input class="form-control" name="description" id="description" type="text" ng-model="vm.codes.description" required />
+                        <span class="help-block has-error"
+                              ng-show="programForm.description.$invalid ">
+                            Description is required
+                        </span>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <hr/>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-disabled="programForm.$invalid" ng-click="vm.createprog(vm.codes)">Create</button>
+            <button class="btn btn-danger" ng-click="vm.cancel(vm.codes)">Cancel</button>
+        </div>
+    </div>
+</div>

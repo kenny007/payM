@@ -1,0 +1,86 @@
+﻿<!--<style>
+  .modal {
+display: block;
+</style>-->
+<div class="row">
+    <form name="scheduleForm"  role="form" novalidate>
+        <fieldset>
+            <legend class="resizer">{{vm.subtitle}}</legend>
+
+            <!--<hr />-->
+            <div class="row">
+                <div class="col-md-5" style="margin-left:2%;">
+                    <div class="form-group" ng-show="{{vm.feeschedule}}">
+                        <label class="control-label" for="scheduleID">TemplateName</label>
+                        <input type="text" id="scheduleID" name="scheduleID" readonly="readonly" ng-model="vm.feeschedule.scheduleID" class="form-control" required />
+                    </div>
+                    <div class="form-group" ng-show="{{!vm.feeschedule}}" ng-class="{'has-error':scheduleForm.scheduleID.$invalid}">
+                        <label class="control-label" for="scheduleID">Template Name (Should be One Word)</label>
+                        <input type="hidden" id="scheduleID" name="scheduleID" ng-model="vm.feeschedule.recordID" class="form-control" />
+                        <input type="text" id="scheduleID" name="scheduleID" placeholder="Template Name (required)" ng-model="vm.feeschedule.scheduleID" class="form-control" required="" />
+                        <span ng-show="scheduleForm.scheduleID.$invalid && scheduleForm.scheduleID.$dirty" class="help-block has-error">
+                            Template Name is required
+                        </span>
+                    </div>
+
+                    <div class="form-group" ng-class="{'has-error':scheduleForm.description.$invalid}">
+                        <label class="control-label" for="description">Description</label>
+                        <input type="text" id="description" name="description" placeholder="Description (required)" ng-model="vm.feeschedule.description" class="form-control" required />
+                        <span class="help-block has-error" ng-show="scheduleForm.description.$invalid && scheduleForm.description.$dirty">
+                            Description is required
+                        </span>
+                    </div>
+
+                    <div class="form-group" ng-class="{'has-error':scheduleForm.remarks.$invalid}">
+                        <label class="control-label" for="remarks">Remarks</label>
+                        <textarea type="text" id="remarks" name="remarks" placeholder="Remarks" ng-model="vm.feeschedule.remarks" class="form-control" required />
+                        <span class="help-block has-error" ng-show="scheduleForm.description.$invalid && scheduleForm.description.$dirty">
+                            Description is required
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+        </fieldset>
+    </form>
+
+    <div class="panel-footer" style="width:1040px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="btn-toolbar" role="toolbar" aria-label="...">           
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-success" ng-hide="{{vm.feeschedule}}" ng-click="vm.save(scheduleForm,vm.feeschedule)">
+                            <span class="glyphicon glyphicon-saved"></span> Save & Close
+                        </button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-success" ng-hide="{{!vm.feeschedule}}" ng-click="vm.saveEdit(scheduleForm,vm.feeschedule)">
+                            <span class="glyphicon glyphicon-saved"></span> Save Changes
+                        </button>
+                    </div>
+
+                    <!--<div class="btn-group">
+                        <button type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-print"></span> Print
+                        </button>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger" ng-click="vm.reset()">
+                            <span class="glyphicon glyphicon-minus-sign"></span> Delete
+                        </button>
+                    </div>-->
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger" ng-click="vm.reset(vm.feeschedule)">
+                            <span class="glyphicon glyphicon-remove"></span> Clear
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

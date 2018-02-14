@@ -1,0 +1,7 @@
+C:\Work\Projects\MPay\MPay.Data\bin\Debug\MPay.Data.dll
+C:\Work\Projects\MPay\MPay.Data\bin\Debug\MPay.Data.pdb
+C:\Work\Projects\MPay\MPay.Data\bin\Debug\EntityFramework.dll
+C:\Work\Projects\MPay\MPay.Data\bin\Debug\EntityFramework.xml
+C:\Work\Projects\MPay\MPay.Data\obj\Debug\MPay.Data.csprojResolveAssemblyReference.cache
+C:\Work\Projects\MPay\MPay.Data\obj\Debug\MPay.Data.dll
+C:\Work\Projects\MPay\MPay.Data\obj\Debug\MPay.Data.pdb

@@ -1,0 +1,88 @@
+﻿<div class="row">
+    <form name="studentForm" role="form" novalidate>
+        <fieldset>
+            <legend class="resizer">Other Student Information</legend>
+            <!--<hr />-->
+            <div class="row">
+                <div class="col-md-5" style="margin-left:2%;">
+                    <div class="form-group">
+                        <label class="control-label" for="abilityStatus">Ability Status</label>
+                        <input type="text" name="abilityStatus" ng-model="vm.student.abilityStatus" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="entryMode">Entry Mode</label>
+                        <input type="text" name="lastName" ng-model="vm.student.entryMode" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="payTemplateNo">Schedule Template</label>
+                        <select class="form-control" name="payTemplateNo" id="payTemplateNo" ng-model="vm.student.payTemplateNo" 
+                                ng-options="c.scheduleID as c.description for c in vm.schedules">
+                            <option value="">Attach Fee Schedule</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-5" style="margin-left:2%;">
+                    <div class="form-group">
+                        <label class="control-label" for="entryLevel">Entry Level</label>
+                        <input type="text" name="entryLevel" ng-model="vm.student.entryLevel" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Current Level</label>
+                        <select class="form-control"  ng-change="vm.activateDForm(vm.student.currentLevel)" ng-model="student.currentLevel" ng-options="c.recordID as c.itemCodeID for c in vm.levels">
+                            <option value="">Select Level</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Student Type</label>
+                        <select class="form-control" ng-model="vm.student.studentType" ng-options="c.recordID as c.itemCodeID for c in vm.getstudtype" required>
+                            <option value="">Select Program</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+        </fieldset>
+    </form>
+
+    <div class="panel-footer" style="width:1060px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="btn-toolbar" role="toolbar" aria-label="...">
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-success" ng-hide="{{vm.student}}" ng-click="vm.save(studentForm,vm.student)">
+                            <span class="glyphicon glyphicon-saved"></span> Save & Close
+                        </button>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-success" ng-hide="{{!vm.student}}" ng-click="vm.saveEdit(studentForm,vm.student)">
+                            <span class="glyphicon glyphicon-saved"></span> Save Changes
+                        </button>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-print"></span> Print
+                        </button>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger" ng-click="vm.reset()">
+                            <span class="glyphicon glyphicon-minus-sign"></span> Delete
+                        </button>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger" ng-hide="{{vm.student}}"  ng-click="vm.reset(vm.student)">
+                            <span class="glyphicon glyphicon-remove"></span> Clear
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
