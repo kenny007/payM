@@ -13,7 +13,7 @@ Details:
 * Management of PayItems
 * Invoce Processing
 * Session/Term Management
- * And More
+
 
 For more information visit this url for a live demo  http://demo.topeogundipe.com/
 
