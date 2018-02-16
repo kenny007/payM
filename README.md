@@ -8,11 +8,12 @@ Details:
  
 ## Features
 
-Student Profile Management
-Fee Schedule/Schedule Details Management
-Management of PayItems
-Invoce Processing
-Session/Term Management
+* Student Profile Management
+* Fee Schedule/Schedule Details Management
+* Management of PayItems
+* Invoce Processing
+* Session/Term Management
+ * And More
 
 For more information visit this url for a live demo  http://demo.topeogundipe.com/
 
